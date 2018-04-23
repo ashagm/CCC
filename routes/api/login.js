@@ -7,27 +7,9 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../../models/user");
 
-router.post('/register', function(req, res){
-  console.log(req.body.username, req.body.password);
-	if(!req.body.username || !req.body.password){
-		res.json({success: false, msg: 'Please pass username and password.'});
-	}else {
-		var newUser = new User({
-			username : req.body.username,
-			password : req.body.password
-		});
-
-		newUser.save(function(err){
-			if(err){
-				return res.json({success: false, msg: 'Already exists.'});
-			}
-
-			res.json({success: true, msg: 'Successfully created a new user'});
-		});
-	}
-});
-
-router.post('/login', function(req, res) {
+//identifies login
+//
+router.post('/', function(req, res) {
   User.findOne({
     username: req.body.username
   }, function(err, user) {
