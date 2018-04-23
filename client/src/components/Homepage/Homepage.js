@@ -1,41 +1,43 @@
-import React from 'react';
-
+import React, {Component} from 'react';
+import {Link } from 'react-router-dom'
 import { Card, CardTitle } from 'material-ui';
+import axios from 'axios';
+import logo from "../../ccc.png";
 
 
-const Homepage = () => (
+class Homepage extends Component {
 
-	<Card className="container">
-    	<CardTitle title="React Application"
-    	 subtitle="This is the home page." />
-  	</Card>
-);
+	logout = (e) => {
+		e.preventDefault();
+		console.log("logout button.");		
+		console.log("logout button token" + localStorage.getItem('jwtToken'));
+
+		 axios.get('/api/auth/logout')
+	      .then((result) => {
+	      	console.log("logged out", result)
+	        localStorage.setItem('jwtToken', "");
+	        console.log("token", localStorage.getItem('jwtToken'));
+	        this.setState({ message: '' });
+	        this.props.history.push('/login')
+	      })
+	      .catch((error) => {
+	        if(error.response.status === 401) {
+	          this.setState({ message: 'Logout failed' });
+	        }
+      	});
+
+	}
+
+	render(){
+		return (<Card className="container">
+    			<CardTitle title="Care! Connect! Conquer!" subtitle="This is the home page." />
+    			<img src={logo} alt="logo" className="logo"/>
+    			<Link to="#" onClick={this.logout}>
+                <span className="text-secondary">Logout</span></Link>  	 
+  			</Card>)
+  	}
+
+}
 
 export default Homepage;
 
-// import logo from "./ccc.png";
-// import "./App.css";
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <MuiThemeProvider>
-//       <div className="App">
-//         <div className="App-header">
-//           <img src={logo} alt="logo" className="logo"/>
-//             <h2>Care! Connect! Conquer!</h2>
-//           }
-//         <div><a href="/login">Login</a></div>
-//         <div><a href="/register">Register</a></div> 
-//         </div>
-//         <p className="App-intro">
-//           content here
-//         </p>
-//       </div>
-//       </MuiThemeProvider>
-//     );
-//   }
-// }
