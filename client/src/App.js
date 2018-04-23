@@ -1,20 +1,23 @@
-import React, { Component } from "react";
-import logo from "./ccc.png";
-import "./App.css";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import Homepage from './components/Homepage';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <h2>Care! Connect! Conquer!</h2>
-        </div>
-        <p className="App-intro">
-          content here
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <MuiThemeProvider>
+      <Switch>
+        <Route exact path='/' component={Homepage} />
+        <Route path='/login' component={Login} />
+        <Route path='/register' component={Register} />
+      </Switch>
+    </MuiThemeProvider>
+  </Router>
+);
 
 export default App;
+
+
+
