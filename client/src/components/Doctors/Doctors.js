@@ -4,10 +4,9 @@ import API from "../../utils/API";
 
 class Doctors extends Component {
 
-    state = {
-      location: ""
-    };
-  
+  state = {
+    location: ""
+  };
 
   handleInputChange = event => {
     // Getting the value and name of the input which triggered the change
@@ -26,7 +25,9 @@ class Doctors extends Component {
     API.getDoctors({
         location: this.state.location
     })
-    .then(res => console.log("got doctors", res))
+    .then(res => {
+      console.log("got doctors", res);
+    })
     .catch(err => console.log(err));
 
   };
