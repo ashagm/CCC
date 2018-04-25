@@ -1,14 +1,11 @@
 const router = require("express").Router();
 const authRoutes = require("./auth");
-// const registerRoutes = require("./register");
-// const loginRoutes = require("./login");
-// const logoutRoutes = require("./logout");
-
+const docRoutes = require("./doctor");
+const paymentRoutes = require("./payment");
 
 router.use("/auth", authRoutes);
+router.use("/doctor", docRoutes);
+router.use("/payment", paymentRoutes);
 
-// router.use("/register", registerRoutes);
-// router.use("/login", loginRoutes);
-// router.use("/logout", logoutRoutes);
 
 module.exports = router;

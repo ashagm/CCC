@@ -33,8 +33,15 @@ class Homepage extends Component {
     			<CardTitle title="Care! Connect! Conquer!" subtitle="This is the home page." />
     			<img src={logo} alt="logo" className="logo"/>
     			<Link to="#" onClick={this.logout}>
-                <span className="text-secondary">Logout</span></Link>  	 
-  			</Card>)
+                <span className="text-secondary">Logout</span>
+                </Link>  <br/>
+                <Link to="/payment">
+                <span className="text-secondary">Donate</span>
+                </Link> <br />
+                <Link to="/doctors">
+                <span className="text-secondary">Doctors</span>
+                </Link>    		 
+  			</Card>);
   	}
 
 }
