@@ -6,6 +6,7 @@ var axios = require('axios');
 let apiKey = 'fbc02dea436e8732f548483ce4e0c7ef';
 
 router.post('/doctors', function(req, res) {
+  console.log("Authenticate", req.isAuthenticated());
   console.log("/doctors", req.body.lat,",",req.body.long);
 
   var docUrl = 

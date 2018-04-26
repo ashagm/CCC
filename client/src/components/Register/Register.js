@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Register.css';
+import logo from "../../logo.png";
+import { RaisedButton, TextField} from 'material-ui';
 
 class Register extends Component {
 
@@ -11,6 +13,7 @@ class Register extends Component {
       password: ''
     };
   }
+  
   onChange = (e) => {
     const state = this.state
     state[e.target.name] = e.target.value;
@@ -39,15 +42,43 @@ class Register extends Component {
   render() {
     const { username, password } = this.state;
     return (
-      <div className="container">
-        <form className="form-signin" onSubmit={this.onSubmit}>
-          <h2 className="form-signin-heading">Register</h2>
-          <label forhtml="inputEmail" className="sr-only">Email address</label>
-          <input type="email" className="form-control" placeholder="Email address" name="username" value={username} onChange={this.onChange} required/>
-          <label forhtml="inputPassword" className="sr-only">Password</label>
-          <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-        </form>
+      <div className="register-page">
+        <img src={logo} alt="logo" className="logo-register"/>
+        <div className="login-container">
+          <form className="form-signin" onSubmit={this.onSubmit}>
+            <h2 className="">Register</h2>
+              <TextField
+                hintText="Enter Email address" 
+                floatingLabelText="Email address"
+                errorText="This field is required" 
+                className="form-control" 
+                name="username" 
+                value={username} 
+                onChange={this.onChange} required
+              />
+              <br />
+              <br />
+
+              <TextField
+                hintText="Enter password" 
+                errorText="This field is required" 
+                type="password" 
+                className="form-control" 
+                name="password" 
+                value={password} 
+                onChange={this.onChange} required
+              /><br />
+              <br />
+          {/* <input type="email" className="form-control" placeholder="Email address" name="username" value={username} onChange={this.onChange} required/> */}
+            
+          {/*  <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/> */}
+              <RaisedButton 
+                label="REGISTER" 
+                className="btn"
+                labelColor="#395399" 
+              />          
+          </form>
+          </div>
       </div>
     );
   }

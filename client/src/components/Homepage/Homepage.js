@@ -3,6 +3,7 @@ import {Link } from 'react-router-dom'
 import { Card, CardTitle } from 'material-ui';
 import axios from 'axios';
 import logo from "../../ccc.png";
+import NavBar from "../NavBar"
 
 
 class Homepage extends Component {
@@ -29,7 +30,10 @@ class Homepage extends Component {
 	}
 
 	render(){
-		return (<Card className="container">
+		return (
+			
+			<Card className="container">
+			<NavBar />
     			<CardTitle title="Care! Connect! Conquer!" subtitle="This is the home page." />
     			<img src={logo} alt="logo" className="logo"/>
     			<Link to="#" onClick={this.logout}>
