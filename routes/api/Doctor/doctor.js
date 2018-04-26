@@ -19,7 +19,7 @@ router.post('/doctors', function(req, res) {
 
   axios.get(docUrl)
     .then(response => {    	
-    	console.log("Response", response.data);
+    	// console.log("Response", response.data);
     	res.send(response.data);   	
     })
     .catch(err => res.status(422).json(err.response));	  

@@ -7,11 +7,12 @@ export default {
     		console.log("Res", response);
     		let lat = response.data.results[0].geometry.location.lat;
 	    	let long = response.data.results[0].geometry.location.lng;
-	    	console.log("lat", lat);console.log("long", long);	    	
+	    	console.log("lat", lat);
+        console.log("long", long);	    	
 	    	return axios.post("/api/doctor/doctors", { "lat" : lat, "long" : long});
     	})
     	.then(postResult => { 
-    		console.log("postResult", postResult);
+    		// console.log("postResult", postResult);
     		return this.getDoctorDetails(postResult.data);
     	})
     	.catch(err => {
@@ -28,13 +29,14 @@ export default {
   	let doctorsData = doctors.data;
   	let doctorsArr = [];
   	doctorsData.forEach(function(result) {
-       console.log("result", result);
+       // console.log("result", result);
         doctorsArr.push(
         	{
 	            "name" : result.profile.first_name + result.profile.last_name + result.profile.title,
 	            "image" : result.profile.image_url,
 	            "bio" : result.profile.bio,
-	            "speciality": result.specialties
+	            "speciality": result.specialties,
+              "id": result.uid
         	}
           );
        });
