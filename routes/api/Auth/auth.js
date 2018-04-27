@@ -10,7 +10,7 @@ var User = require("../../../models/user");
 router.post('/login', function(req, res) {
   console.log("/login");
   User.findOne({
-    username: req.body.username
+    useremail: req.body.useremail
   }, function(err, user) {
     if (err) throw err;
 
@@ -40,6 +40,7 @@ router.post('/register', function(req, res) {
   }else {
     var newUser = new User({
       username : req.body.username,
+      useremail : req.body.useremail,
       password : req.body.password
     });
 

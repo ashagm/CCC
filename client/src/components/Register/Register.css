@@ -1,9 +1,5 @@
-.register-page{
-  margin: 0 auto;
-}
-
 .login-container{
-    /*margin: 0 auto;*/
+    margin: 0 auto;
     width: 500px;
     border: 2px solid #fff;
 }
@@ -11,21 +7,29 @@
 .logo-register{
   height: 100px;
   width: 150px;
+}
+
+.div-logo{
+  margin-left: 550px;
+  padding: 20px 0px;
+}
+
+.btn-register{
   margin: 0 auto;
 }
 
-/*.form-signin {
+.form-signin {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 }
-.form-signin .form-signin-heading,
+/*.form-signin .form-signin-heading,
 .form-signin .checkbox {
   margin-bottom: 10px;
 }
 .form-signin .checkbox {
   font-weight: normal;
-}
+}*/
 .form-signin .form-control {
   position: relative;
   height: auto;
@@ -49,4 +53,4 @@
 }
 .form-signin p {
   margin-top: 10px;
-}*/
+}

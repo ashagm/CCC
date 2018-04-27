@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import logo from "../../logo.png";
+import { RaisedButton, TextField} from 'material-ui';
 
 class Login extends Component {
 
   constructor() {
     super();
     this.state = {
-      username: '',
+      useremail: '',
       password: '',
       message: ''
     };
@@ -22,9 +24,9 @@ class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { username, password } = this.state;
+    const { useremail, password } = this.state;
 
-    axios.post('/api/auth/login', { username, password })
+    axios.post('/api/auth/login', { useremail, password })
       .then((result) => {
         localStorage.setItem('jwtToken', result.data.token);
         this.setState({ message: '' });
@@ -38,25 +40,55 @@ class Login extends Component {
   }
 
   render() {
-    const { username, password, message } = this.state;
+    const { useremail, password, message } = this.state;
     return (
-      <div className="container">
+       <div className="register-page">
+        <div className="div-logo">
+          <img src={logo} alt="logo" className="logo-register"/>
+        </div> 
+        <div className="login-container">
         <form className="form-signin" onSubmit={this.onSubmit}>
           {message !== '' &&
             <div className="alert alert-warning alert-dismissible" role="alert">
               { message }
             </div>
           }
-          <h2 className="form-signin-heading">Please sign in</h2>
-          <label forhtml="inputEmail" className="sr-only">Email address</label>
-          <input type="email" className="form-control" placeholder="Email address" name="username" value={username} onChange={this.onChange} required/>
-          <label forhtml="inputPassword" className="sr-only">Password</label>
-          <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={this.onChange} required/>
-          <button className="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+          <h2 className="form-signin-heading">SIGN IN </h2>
+
+          <TextField
+            hintText="Enter Email " 
+            type="email" 
+            floatingLabelText="Email"
+            className="form-control" 
+            name="useremail" 
+            value={useremail} 
+            onChange={this.onChange} required
+          />  
+          <br />         
+          <TextField
+            hintText="Enter password" 
+            floatingLabelText="Password"
+            className="form-control" 
+            name="password" 
+            value={password} 
+            type="password" 
+            onChange={this.onChange} required
+          />
+          <br /> <br />
+          <RaisedButton 
+            className="btn btn-lg btn-primary btn-block" 
+            label="LOGIN" 
+            className="btn-register"
+            labelColor="#395399"
+            type="submit" />
+          <br/><br/>
           <p>
-            Not a member? <Link to="/register"><span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Register here</Link>
+            Not a member? &nbsp;&nbsp;
+            <Link to="/register">
+            <span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Click here</Link>
           </p>
         </form>
+      </div>
       </div>
     );
   }
