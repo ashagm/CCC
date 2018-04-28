@@ -1,6 +1,6 @@
 import React from 'react'
-import { Container, Image} from "semantic-ui-react";
-import logo from "../../ccc.png";
+import { Container} from "semantic-ui-react";
+// import logo from "../../ccc.png";
 import './NavBar.css';
 
 

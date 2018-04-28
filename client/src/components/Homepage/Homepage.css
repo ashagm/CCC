@@ -1,0 +1,18 @@
+.btn-tabs{
+	width: 150px;
+	height: 150px;
+	font-size: 16px;
+	color: blue;
+	background-color: #fff;
+	margin: 20px;
+	border: 2px solid red;
+	font-weight: bold;
+	border-radius: 30px;
+}
+
+.div-links{
+	width: 500px;
+	margin: 30px auto;
+	border: 2px solid red;
+	text-align: center;
+}

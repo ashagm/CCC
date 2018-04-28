@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import {Link } from 'react-router-dom'
-import { Card, CardTitle } from 'material-ui';
 import axios from 'axios';
-import logo from "../../ccc.png";
-import NavBar from "../NavBar"
-
+import logo from "../../logo.png";
+import "./Homepage.css";
 
 class Homepage extends Component {
 
@@ -31,9 +29,25 @@ class Homepage extends Component {
 
 	render(){
 		return (
-			
-			<Card className="container">
-			<NavBar />
+		<div className="container">	
+			<div className="div-logo">
+				<img src={logo} alt="logo" className="logo-register"/>
+			</div> 
+			<div className="div-links">
+			   	<Link to="/doctors">
+			   		<button className="btn-tabs">Search Doctors</button>
+			   	</Link>
+			   	<Link to="/payment">
+			   		<button className="btn-tabs">Donate Now</button>
+			   	</Link>
+			   	<Link to="/payment">
+			   		<button className="btn-tabs">Ask Questions</button>
+			   	</Link>
+			   	<Link to="/payment">
+			   		<button className="btn-tabs">Chat room</button>
+			   	</Link>
+			 </div>  	
+			{/*<Card >
     			<CardTitle title="Care! Connect! Conquer!" subtitle="This is the home page." />
     			<img src={logo} alt="logo" className="logo"/>
     			<Link to="#" onClick={this.logout}>
@@ -45,7 +59,8 @@ class Homepage extends Component {
                 <Link to="/doctors">
                 <span className="text-secondary">Doctors</span>
                 </Link>    		 
-  			</Card>);
+  			</Card>*/}
+  	</div>	);	
   	}
 
 }

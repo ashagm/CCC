@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import {Link } from 'react-router-dom'
 import { RaisedButton} from 'material-ui';
 import axios from 'axios';
 import logo from "../../logo.png";
-import NavBar from "../NavBar";
 import "./Dashboard.css";
 import "./type.js"
 

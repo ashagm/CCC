@@ -24,7 +24,7 @@ router.post('/login', function(req, res) {
           var token = jwt.sign(user.toJSON(), settings.secret);
           // return the information including token as JSON
           console.log("logged in token", token);
-          res.json({success: true, token: 'JWT ' + token});
+          res.json({success: true, token: 'JWT ' + token, mySession: user});
         } else {
           res.status(401).send({success: false, msg: 'Authentication failed. Wrong password.'});
         }

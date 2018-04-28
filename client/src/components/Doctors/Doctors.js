@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import './Doctors.css';
 import API from "../../utils/API";
+import { Segment, Image, Grid, Item } from 'semantic-ui-react';
+// import { Form, Input, Icon, Dropdown, Button } from "semantic-ui-react";
 import DocDetails from "./DocDetails";
+import logo from "../../logo.png";
+import doclogo from "./doctor.jpeg";
 
 class Doctors extends Component {
 
@@ -11,9 +15,7 @@ class Doctors extends Component {
   };
 
   handleInputChange = event => {
-    // Getting the value and name of the input which triggered the change
     const { name, value } = event.target;
-    // Updating the input's state
     this.setState({
       [name]: value
     });
@@ -39,39 +41,59 @@ class Doctors extends Component {
   render() {
     return (
       <div className="container">
-        <h1>DOCTORS</h1>
-        <h3> Search for Oncologists </h3>
-         <div>
-          <form className="form">
+        <div className="div-logo">
+          <img src={logo} alt="logo" className="logo-register"/>
+        </div> 
+         <div className="searchBar">
+          <form className="search-form">
             <input
               value={this.state.location}
               name="location"
               onChange={this.handleInputChange}
               type="text"
-              placeholder="Enter state"
+              className="input-field"
+              placeholder="Enter location"
             />
-            <button className="my-button" onClick={this.handleFormSubmit}>Find Doctors</button>
+            <button className="btn-search" onClick={this.handleFormSubmit}>Search</button>
           </form>
         </div>
 
         {this.state.doctors.length ? (
           <div className="mainContainer">
-            <div className="mainItemMap">
-                  {this.state.doctors.map(doctor => (
-                    <div id={doctor.id}>
-                      <h1>{doctor.name}</h1>
-                      <img src={doctor.image} alt={doctor.name}/>
-                      <div>{doctor.speciality.map(specialities => 
-                        (<p>{specialities.name}</p>)
-                      )}
-                      </div>
-                    </div> 
+            <div className="doc-container-display">
+              <Item.Group>
+                  {this.state.doctors.map(doctor => (                   
+                     <Item className="doc-div">
+                        <Item.Image
+                          src={doctor.image}
+                          alt={doctor.name}
+                        />
+                        <Item.Content>
+                            <Item.Header as="a" onClick={e => this.props.onClick(this.props.dr)} style={{color: "rgb(95, 124, 162)"}}>
+                              Dr. {doctor.name}
+                            </Item.Header>
+                            <Item.Meta>
+                              <span>
+                                {doctor.speciality.map(specialities => 
+                                    (<p>{specialities.name}</p>)
+                                )}
+                              </span>
+                              <br />
+                            </Item.Meta>
+                        </Item.Content>
+                      </Item>
                   ))}
+              </Item.Group>    
             </div>
-
           </div>
           ) : (
-            <div> No doctors to show</div>
+            <div>
+              <Segment className="welcomeBox">
+                  <h1 className="work-sans">Find your local doctors</h1>
+                  <h3 className="work-sans">Enter your current location to get started</h3>
+                  <Image className="doc-image" src={doclogo}/>
+              </Segment>
+            </div>
           )
         }
       </div>
