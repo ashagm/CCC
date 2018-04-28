@@ -51,6 +51,7 @@ export default {
 	            "bio" : result.profile.bio,
 	            "speciality": result.specialties,
               "id": result.uid,
+              "address": result.practices[0].visit_address
         	}
           );
        });

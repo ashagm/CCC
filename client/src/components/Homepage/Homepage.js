@@ -43,7 +43,7 @@ class Homepage extends Component {
 			   	<Link to="/payment">
 			   		<button className="btn-tabs">Ask Questions</button>
 			   	</Link>
-			   	<Link to="/payment">
+			   	<Link to="/chat">
 			   		<button className="btn-tabs">Chat room</button>
 			   	</Link>
 			 </div>  	

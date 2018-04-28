@@ -61,25 +61,31 @@ class Doctors extends Component {
         {this.state.doctors.length ? (
           <div className="mainContainer">
             <div className="doc-container-display">
-              <Item.Group>
+              <Item.Group divided>
                   {this.state.doctors.map(doctor => (                   
                      <Item className="doc-div">
                         <Item.Image
                           src={doctor.image}
                           alt={doctor.name}
+                          className="doc-thumb-image"
                         />
                         <Item.Content>
                             <Item.Header as="a" onClick={e => this.props.onClick(this.props.dr)} style={{color: "rgb(95, 124, 162)"}}>
                               Dr. {doctor.name}
                             </Item.Header>
-                            <Item.Meta>
-                              <span>
-                                {doctor.speciality.map(specialities => 
+                            <Item.Description>
+                              {doctor.speciality.map(specialities => 
                                     (<p>{specialities.name}</p>)
                                 )}
+                            </Item.Description>
+                            <Item.Meta>
+                              <span>{doctor.address.street} {doctor.address.city} {doctor.address.state} </span>
+                              <span>
+                                
                               </span>
                               <br />
                             </Item.Meta>
+
                         </Item.Content>
                       </Item>
                   ))}
@@ -96,7 +102,23 @@ class Doctors extends Component {
             </div>
           )
         }
+
+
+
+       {/*}  {this.state.doctors.map(doctor => (  
+             <div className="doc">
+               <div >
+                <Image className="doc-image" src={doctor.image}/>
+               </div>
+               <p className="bio">
+                {doctor.bio}
+               </p>
+                <strong className="name">{doctor.name}</strong>
+            </div>
+        ))} */}
       </div>
+
+
      
     );
   }

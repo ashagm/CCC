@@ -6,6 +6,10 @@
 	margin: 10px;
 }
 
+.doc-thumb-image{
+	width: 50%;
+}
+
 .input-field{
 	width: 200px;
 	padding: 10px;
@@ -76,4 +80,8 @@
 
 .ui.segment .welcomeBox{
 	background: transparent;
+}
+
+.doc{
+	color: red;
 }
