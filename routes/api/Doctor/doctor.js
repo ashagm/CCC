@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 var axios = require('axios');
+var Doctor = require("../../../models/doctor");
 
 let apiKey = 'fbc02dea436e8732f548483ce4e0c7ef';
 let googleAPIKey= 'AIzaSyDOHt8WJPCxUTykGJPREk1gqNDcfrq--k8';
@@ -38,6 +39,42 @@ router.post('/doctors', function(req, res) {
     .catch(err => res.status(422).json(err.response));   
    
 });
+
+router.post('/save', function(req, res){
+  console.log("in Save", req.body, req.params);
+
+    var newDoctor = new Doctor({
+      id : req.body.id,
+      name : req.body.name,
+      speciality : req.body.speciality,
+      bio : req.body.bio,
+      image : req.body.image
+    });
+
+    newDoctor.save(function(err){
+      if(err){
+        return res.json({success: false, msg: 'Already exists.'});
+      }
+      console.log("done!");
+      res.json({success: true, msg: 'Successfully created a new Doctor'});
+    });
+  
+});
+
+router.get('/all', function(req, res){
+  console.log("in get all" );
+
+    Doctor.find({})
+    .then(function(dbDoctor) {
+      // If any Books are found, send them to the client
+      res.json(dbDoctor);
+    })
+    .catch(function(err) {
+      // If an error occurs, send it back to the client
+      res.json(err);
+    });
+  
+})
 
 
 module.exports = router;

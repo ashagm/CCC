@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './Doctors.css';
 import API from "../../utils/API";
-import { Segment, Image, Grid, Item } from 'semantic-ui-react';
+import { Segment, Image, Grid, Item, Button } from 'semantic-ui-react';
 // import { Form, Input, Icon, Dropdown, Button } from "semantic-ui-react";
-import DocDetails from "./DocDetails";
 import logo from "../../logo.png";
 import doclogo from "./doctor.jpeg";
 
@@ -12,6 +11,8 @@ class Doctors extends Component {
   state = {
     location: "",
     doctors: [],
+    savedDocs: false,
+    savedDoctors: []
   };
 
   handleInputChange = event => {
@@ -24,16 +25,36 @@ class Doctors extends Component {
   handleFormSubmit = (event) => {
     console.log("handleFormSubmit", this.state.location)
     event.preventDefault();
-
+    this.setState({savedDocs : false});
     API.getDoctors({
         location: this.state.location
     })
     .then(resDoctors => {
-      console.log("got doctors", resDoctors);
+      console.log("got doctors, resDoctors", resDoctors);
       // this.state.doctors.push(resDoctors);
       // console.log("state", this.state.doctors);
       this.setState({ doctors: resDoctors});
       // this.setState({ doctors: [...this.state.doctors, resDoctors]})
+    })
+    .catch(err => console.log(err));
+  };
+
+  saveDoctor = props => {
+    console.log(props);
+    API.saveDoctor(props)
+    .then(response => {
+      console.log("saved", response);
+    })
+    .catch(err => console.log(err))
+  };
+
+  fetchSavedDoctors = (event) => {
+    
+    API.getSavedDoctors()
+    .then(response => {
+      console.log("got saved docs", response.data);
+      this.setState({savedDocs : true});
+      this.setState({ savedDoctors: response.data});
     })
     .catch(err => console.log(err));
   };
@@ -54,13 +75,33 @@ class Doctors extends Component {
               className="input-field"
               placeholder="Enter location"
             />
-            <button className="btn-search" onClick={this.handleFormSubmit}>Search</button>
+            <button className="btn-search" onClick={this.handleFormSubmit}>Search</button>          
           </form>
+          <button className="btn-search" onClick={this.fetchSavedDoctors}>Recommended Doctors</button>
         </div>
 
-        {this.state.doctors.length ? (
+        {this.state.doctors.length || this.state.savedDoctors.length ? (
           <div className="mainContainer">
             <div className="doc-container-display">
+              {this.state.savedDocs ? (
+                <Item.Group divided>
+                  {this.state.savedDoctors.map(savedDoctor => (                   
+                     <Item className="doc-div">
+                        
+                        <Item.Content>
+                            <Item.Header style={{color: "rgb(95, 124, 162)"}}>
+                              Dr. {savedDoctor.name}
+                            </Item.Header>
+                            <Item.Image
+                              src={savedDoctor.image}
+                              alt={savedDoctor.name}
+                              className="doc-thumb-image"
+                            />
+                        </Item.Content>
+                      </Item>
+                  ))}
+                </Item.Group>  
+              ) :(
               <Item.Group divided>
                   {this.state.doctors.map(doctor => (                   
                      <Item className="doc-div">
@@ -70,7 +111,7 @@ class Doctors extends Component {
                           className="doc-thumb-image"
                         />
                         <Item.Content>
-                            <Item.Header as="a" onClick={e => this.props.onClick(this.props.dr)} style={{color: "rgb(95, 124, 162)"}}>
+                            <Item.Header as="a" onClick={e => this.props.onClick(this.props.doctor)} style={{color: "rgb(95, 124, 162)"}}>
                               Dr. {doctor.name}
                             </Item.Header>
                             <Item.Description>
@@ -86,10 +127,13 @@ class Doctors extends Component {
                               <br />
                             </Item.Meta>
 
+                         <Button positive onClick={() => this.saveDoctor(doctor)} >Recommend</Button>    
+
                         </Item.Content>
                       </Item>
                   ))}
-              </Item.Group>    
+              </Item.Group>  
+              )}  
             </div>
           </div>
           ) : (

@@ -32,6 +32,10 @@ export default {
      })       
   },
 
+  getSavedDoctors : function(){
+    return axios.get("/api/doctor/all");
+  },
+
 
   getGeoLocation : function(location){
 		console.log('In API', location);
@@ -57,5 +61,10 @@ export default {
        });
   	console.log(doctorsArr);
   	return doctorsArr;
+  },
+
+  saveDoctor : function(doctor){
+    console.log("In Save doctor", doctor)
+    return axios.post("/api/doctor/save", doctor);
   }
 };
