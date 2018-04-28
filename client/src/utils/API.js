@@ -1,24 +1,35 @@
 import axios from "axios";
 
 export default {
+  // getDoctors: function(location) {
+  //   console.log()
+  //   return this.getGeoLocation(location)
+  //   	.then(response => {
+  //   		console.log("Res", response);
+  //   		let lat = response.data.results[0].geometry.location.lat;
+	 //    	let long = response.data.results[0].geometry.location.lng;
+	 //    	// console.log("lat", lat);
+  //     //   console.log("long", long);	    	
+	 //    	return axios.post("/api/doctor/doctors", { "lat" : lat, "long" : long, "location": location.location});
+  //   	})
+  //   	.then(postResult => { 
+  //   		// console.log("postResult", postResult);
+  //   		return this.getDoctorDetails(postResult.data);
+  //   	})
+  //   	.catch(err => {
+  //   		console.log(err);
+  //   	})    
+  // },
+
   getDoctors: function(location) {
-    console.log()
-    return this.getGeoLocation(location)
-    	.then(response => {
-    		console.log("Res", response);
-    		let lat = response.data.results[0].geometry.location.lat;
-	    	let long = response.data.results[0].geometry.location.lng;
-	    	// console.log("lat", lat);
-      //   console.log("long", long);	    	
-	    	return axios.post("/api/doctor/doctors", { "lat" : lat, "long" : long, "location": location.location});
-    	})
-    	.then(postResult => { 
-    		// console.log("postResult", postResult);
-    		return this.getDoctorDetails(postResult.data);
-    	})
-    	.catch(err => {
-    		console.log(err);
-    	})    
+    return axios.post("/api/doctor/doctors", {"location": location.location})
+    .then(postResult => { 
+       // console.log("postResult", postResult);
+       return this.getDoctorDetails(postResult.data);
+     })
+     .catch(err => {
+       console.log(err);
+     })       
   },
 
 
@@ -29,6 +40,7 @@ export default {
 
   getDoctorDetails : function(doctors){
   	let doctorsData = doctors.data;
+    console.log(doctorsData);
   	let doctorsArr = [];
   	doctorsData.forEach(function(result) {
 
@@ -38,7 +50,7 @@ export default {
 	            "image" : result.profile.image_url,
 	            "bio" : result.profile.bio,
 	            "speciality": result.specialties,
-              "id": result.uid
+              "id": result.uid,
         	}
           );
        });
