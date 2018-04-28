@@ -23,3 +23,11 @@
   width: 300px;
 }
 
+.donate-card{
+  height: 400px;
+  margin: 0 auto;
+}
+
+.donate-container{
+  padding: 50px 100px;
+}
