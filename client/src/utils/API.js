@@ -66,5 +66,22 @@ export default {
   saveDoctor : function(doctor){
     console.log("In Save doctor", doctor)
     return axios.post("/api/doctor/save", doctor);
+  },
+
+  getUsername : function(){
+    console.log(localStorage.getItem('mySession'));
+  },
+
+  saveService: function(){
+      return axios.post("/api/service");
+  },
+
+  getAllServicesOffered: function(){
+    console.log("getAllServicesoffered......");
+      return axios.get("/api/service/all/offer");
+  },
+
+  getAllServicesRequired: function(){
+      return axios.get("/api/service/all/require");
   }
 };

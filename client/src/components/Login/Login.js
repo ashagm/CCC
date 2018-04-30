@@ -31,6 +31,7 @@ class Login extends Component {
         console.log(result.data);
         localStorage.setItem('jwtToken', result.data.token);
         localStorage.setItem('mySession', result.data.mySession);
+        localStorage.setItem('username', result.data.mySession.username);
         this.setState({ message: '' });
         this.props.history.push('/homepage')
       })

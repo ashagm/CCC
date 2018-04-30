@@ -6,6 +6,8 @@ import Homepage from './components/Homepage';
 import Donate from './components/Donate';
 import Doctors from './components/Doctors';
 import Dashboard from './components/Dashboard';
+import Chat from './components/Chat';
+import Services from './components/Services';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const App = () => (
@@ -18,6 +20,8 @@ const App = () => (
         <Route path='/register' component={Register} />
         <Route path='/payment' component={Donate}/>
         <Route path='/doctors' component={Doctors}/>
+        <Route path='/chat' component={Chat}/>
+        <Route path='/services' component={Services}/>
       </Switch>
     </MuiThemeProvider>
   </Router>

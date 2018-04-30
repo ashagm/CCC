@@ -40,11 +40,14 @@ class Homepage extends Component {
 			   	<Link to="/payment">
 			   		<button className="btn-tabs">Donate Now</button>
 			   	</Link>
-			   	<Link to="/payment">
+			   	<Link to="/questions">
 			   		<button className="btn-tabs">Ask Questions</button>
 			   	</Link>
 			   	<Link to="/chat">
 			   		<button className="btn-tabs">Chat room</button>
+			   	</Link>
+			   	<Link to="/services">
+			   		<button className="btn-tabs">Services</button>
 			   	</Link>
 			 </div>  	
 			{/*<Card >
