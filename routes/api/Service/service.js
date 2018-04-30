@@ -26,13 +26,13 @@ router.post('/create', function(req, res) {
 
 router.get('/all/offer', function(req, res) { 
   	console.log("all offers");
-	Service.find({ 'type' : 'offer' }, function (err, service) {
-		if(err){
-        	return res.json(err);
-      		}
-      	console.log(service)
-      	return res.json(service);
-	});
+  	Service.find({ 'type' : 'offer' }, function (err, service) {
+  		if(err){
+          	return res.json(err);
+        		}
+        	console.log(service)
+        	return res.json(service);
+  	});
 });
 
 router.get('/all/require', function(req, res) {
