@@ -1,17 +1,45 @@
-import React from 'react'
-import { Container} from "semantic-ui-react";
-// import logo from "../../ccc.png";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { Container } from "semantic-ui-react";
+import logo from "../../logo.png";
 import './NavBar.css';
 
+class NavBar extends Component {
+	
+	logout = (e) => {
+		e.preventDefault();
+		console.log("logout button.");		
+		console.log("logout button token" + localStorage.getItem('jwtToken'));
 
-const NavBar = () => {
-  return(
-   	<Container fluid className="Nav-header">
-      <h1 className="work-sans header-text">
-        	LOGO
-      </h1>
-    </Container>  
-    )
+		 axios.get('/api/auth/logout')
+	      .then((result) => {
+	      	console.log("logged out", result)
+	        localStorage.setItem('jwtToken', "");
+	        console.log("token", localStorage.getItem('jwtToken'));
+	        this.setState({ message: '' });
+	        this.props.history.push('/')
+	      })
+	      .catch((error) => {
+	        if(error.response.status === 401) {
+	          this.setState({ message: 'Logout failed' });
+	        }
+      	});
+	}
+
+	render(){
+			return(
+				<Container>
+			      <div className="div-logo">
+			        <img src={logo} alt="logo" className="logo-register"/>
+			         <Link to="#" onClick={this.logout} className ="link-logout">
+			        	<span className="text-secondary">Logout</span>
+			        </Link>
+			      </div> 
+			    </Container>  
+	  		);
+  	}
+
 }
 
 export default NavBar;

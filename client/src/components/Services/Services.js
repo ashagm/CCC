@@ -3,6 +3,7 @@ import axios from 'axios';
 import './Services.css';
 import API from "../../utils/API";
 import logo from "../../logo.png";
+import NavBar from "../NavBar";
 import { Card, Segment, Form, Grid, Input, Item, TextArea, Button } from 'semantic-ui-react';
 
 class Services extends Component {
@@ -15,7 +16,8 @@ class Services extends Component {
       details: '',
       servicetype: '',
       message: '',
-      servicesOffered: []
+      servicesOffered: [],
+      servicesRequired: []
     };
   }
 
@@ -27,10 +29,10 @@ class Services extends Component {
   }
 
   componentWillMount(){
-        console.log("....mounting services");
-        let username = localStorage.getItem("username");
-        console.log("username", username);
-        this.setState({"name": username});
+    console.log("....mounting services");
+    let username = localStorage.getItem("username");
+    console.log("username", username);
+    this.setState({"name": username});
   }
 
   componentDidMount(){
@@ -38,11 +40,23 @@ class Services extends Component {
     API.getAllServicesOffered()
       .then(resOfferedServices => {
         console.log("got Services, resOfferedServices", resOfferedServices.data);
-        this.setState({ servicesOffered: resOfferedServices});
+        console.log("Services offered", this.state.servicesOffered);
+        this.setState({ servicesOffered: resOfferedServices.data});
         // this.setState({ servicesOffered: [...this.state.servicesOffered, resOfferedServices]})
-        console.log(this.state.servicesOffered);
+        
       })
       .catch(err => console.log(err));
+
+    API.getAllServicesRequired()
+      .then(resRequiredServices => {
+        console.log("got Services, resOfferedServices", resRequiredServices.data);
+        console.log("Services Required", this.state.servicesRequired);
+        this.setState({ servicesRequired: resRequiredServices.data});
+        // this.setState({ servicesOffered: [...this.state.servicesOffered, resOfferedServices]})
+        
+      })
+      .catch(err => console.log(err));
+  
 
   }
 
@@ -66,15 +80,15 @@ class Services extends Component {
         }
     });
    
-
   }
  
   render() {
     return (
       <div>
-        <div className="div-logo">
+      <NavBar />
+        {/*<div className="div-logo">
           <img src={logo} alt="logo" className="logo-register"/>
-        </div> 
+        </div> */}
          <Grid columns='equal'>
             <Grid.Column>
               <Segment>
@@ -125,9 +139,21 @@ class Services extends Component {
                     <Card.Header>
                       Services Required
                     </Card.Header>
-                    <Card.Content>
-
-                    </Card.Content>
+                   </Card.Content> 
+                  <Card.Content>
+                       <Item.Group divided>
+                        {this.state.servicesRequired.map(serviceRequire => (                   
+                           <Item>                          
+                               <Item.Content>
+                                <Item.Header>{serviceRequire.name}</Item.Header>
+                                <Item.Meta>{serviceRequire.contact}</Item.Meta>
+                                <Item.Description>
+                                  {serviceRequire.details}
+                                </Item.Description>
+                              </Item.Content>
+                            </Item>
+                        ))}
+                    </Item.Group>  
                   </Card.Content>
                 </Card>
               </Segment>
@@ -148,11 +174,10 @@ class Services extends Component {
                             <Item.Description>
                               {serviceOffer.details}
                             </Item.Description>
-                            <Item.Extra>Additional Details</Item.Extra>
                           </Item.Content>
                         </Item>
                     ))}
-                </Item.Group>  
+                  </Item.Group>  
 
                   </Card.Content>
                 </Card>

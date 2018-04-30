@@ -5,6 +5,7 @@ import { Segment, Image, Grid, Item, Button } from 'semantic-ui-react';
 // import { Form, Input, Icon, Dropdown, Button } from "semantic-ui-react";
 import logo from "../../logo.png";
 import doclogo from "./doctor.jpeg";
+import NavBar from "../NavBar";
 
 class Doctors extends Component {
 
@@ -62,9 +63,10 @@ class Doctors extends Component {
   render() {
     return (
       <div className="container">
-        <div className="div-logo">
+        <NavBar/>
+        {/*<div className="div-logo">
           <img src={logo} alt="logo" className="logo-register"/>
-        </div> 
+        </div> */}
          <div className="searchBar">
           <form className="search-form">
             <input

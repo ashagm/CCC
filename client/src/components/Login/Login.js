@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Login.css';
+import NavBar from "../NavBar";
 import logo from "../../logo.png";
 import { RaisedButton, TextField} from 'material-ui';
 
@@ -46,9 +47,10 @@ class Login extends Component {
     const { useremail, password, message } = this.state;
     return (
        <div className="register-page">
-        <div className="div-logo">
+       <NavBar/>
+        {/*<div className="div-logo">
           <img src={logo} alt="logo" className="logo-register"/>
-        </div> 
+        </div> */}
         <div className="login-container">
         <form className="form-signin" onSubmit={this.onSubmit}>
           {message !== '' &&

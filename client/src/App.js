@@ -7,6 +7,7 @@ import Donate from './components/Donate';
 import Doctors from './components/Doctors';
 import Dashboard from './components/Dashboard';
 import Chat from './components/Chat';
+import NavBar from './components/NavBar';
 import Services from './components/Services';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 

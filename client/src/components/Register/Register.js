@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Register.css';
 import logo from "../../logo.png";
 import { RaisedButton, TextField} from 'material-ui';
-
+import NavBar from "../NavBar";
 
 class Register extends Component {
 
@@ -46,9 +46,10 @@ class Register extends Component {
     const { username, password, useremail, password1 } = this.state;
     return (
       <div className="register-page">
-        <div className="div-logo">
+        <NavBar/>
+        {/*<div className="div-logo">
           <img src={logo} alt="logo" className="logo-register"/>
-        </div> 
+        </div> */}
         <div className="login-container">
           <form className="form-signin" onSubmit={this.onSubmit}>
             <h1 className="">Register</h1>

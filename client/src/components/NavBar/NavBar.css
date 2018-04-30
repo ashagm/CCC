@@ -1,5 +1,7 @@
-.Nav-header{
-	background-color: #000;
-	color: #fff;
-	font-family: 'Playfair Display', serif;
+
+.link-logout{
+	display: inline-block;
+	float: right;
+	font-size: 20px;
+	font-weight: bold;
 }
