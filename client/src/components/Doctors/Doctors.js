@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Doctors.css';
 import API from "../../utils/API";
 import { Segment, Image, Grid, Item, Button } from 'semantic-ui-react';
-// import { Form, Input, Icon, Dropdown, Button } from "semantic-ui-react";
 import logo from "../../logo.png";
 import doclogo from "./doctor.jpeg";
 import NavBar from "../NavBar";
@@ -61,26 +60,24 @@ class Doctors extends Component {
   };
 
   render() {
+
     return (
       <div className="container">
         <NavBar/>
-        {/*<div className="div-logo">
-          <img src={logo} alt="logo" className="logo-register"/>
-        </div> */}
-         <div className="searchBar">
-          <form className="search-form">
-            <input
-              value={this.state.location}
-              name="location"
-              onChange={this.handleInputChange}
-              type="text"
-              className="input-field"
-              placeholder="Enter location"
-            />
-            <button className="btn-search" onClick={this.handleFormSubmit}>Search</button>          
-          </form>
-          <button className="btn-search" onClick={this.fetchSavedDoctors}>Recommended Doctors</button>
-        </div>
+        <div className="searchBar">
+            <form className="search-form">          
+              <input
+                value={this.state.location}
+                name="location"
+                onChange={this.handleInputChange}
+                type="text"
+                className="input-field"
+                placeholder="Enter location"
+              />
+              <button className="btn-search" onClick={this.handleFormSubmit}>Search</button>          
+            </form>
+            <span><button className="btn-search-rec" onClick={this.fetchSavedDoctors}>Recommended Doctors</button></span>               
+        </div>           
 
         {this.state.doctors.length || this.state.savedDoctors.length ? (
           <div className="mainContainer">
@@ -88,21 +85,24 @@ class Doctors extends Component {
               {this.state.savedDocs ? (
                 <Item.Group divided>
                   {this.state.savedDoctors.map(savedDoctor => (                   
-                     <Item className="doc-div">
-                        
-                        <Item.Content>
-                            <Item.Header style={{color: "rgb(95, 124, 162)"}}>
-                              Dr. {savedDoctor.name}
-                            </Item.Header>
+                    <Item className="doc-div">                        
+                        <Item.Content> 
+                            <Item.Header style={{color: "rgb(95, 124, 162)"}}> 
+                               Dr. {savedDoctor.name}
+                            </Item.Header>                      
                             <Item.Image
                               src={savedDoctor.image}
                               alt={savedDoctor.name}
                               className="doc-thumb-image"
                             />
+                            <Item.Description>
+                              {savedDoctor.bio}
+                            </Item.Description>
+                           
                         </Item.Content>
                       </Item>
                   ))}
-                </Item.Group>  
+                </Item.Group> 
               ) :(
               <Item.Group divided>
                   {this.state.doctors.map(doctor => (                   
@@ -113,7 +113,7 @@ class Doctors extends Component {
                           className="doc-thumb-image"
                         />
                         <Item.Content>
-                            <Item.Header as="a" onClick={e => this.props.onClick(this.props.doctor)} style={{color: "rgb(95, 124, 162)"}}>
+                            <Item.Header style={{color: "rgb(95, 124, 162)"}}>
                               Dr. {doctor.name}
                             </Item.Header>
                             <Item.Description>
@@ -148,24 +148,7 @@ class Doctors extends Component {
             </div>
           )
         }
-
-
-
-       {/*}  {this.state.doctors.map(doctor => (  
-             <div className="doc">
-               <div >
-                <Image className="doc-image" src={doctor.image}/>
-               </div>
-               <p className="bio">
-                {doctor.bio}
-               </p>
-                <strong className="name">{doctor.name}</strong>
-            </div>
-        ))} */}
-      </div>
-
-
-     
+      </div>     
     );
   }
 }
