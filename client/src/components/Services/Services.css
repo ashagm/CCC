@@ -1,0 +1,9 @@
+.services-container{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.services-segment{
+	overflow-y: scroll;
+	height: 250px;
+}

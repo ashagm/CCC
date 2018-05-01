@@ -84,11 +84,8 @@ class Services extends Component {
  
   render() {
     return (
-      <div>
+      <div className="services-container">
       <NavBar />
-        {/*<div className="div-logo">
-          <img src={logo} alt="logo" className="logo-register"/>
-        </div> */}
          <Grid columns='equal'>
             <Grid.Column>
               <Segment>
@@ -133,8 +130,8 @@ class Services extends Component {
               </Segment>
             </Grid.Column>
             <Grid.Column width={12}>
-              <Segment>
-                <Card>
+              <Segment  className="services-segment">
+                <Card fluid>
                   <Card.Content>
                     <Card.Header>
                       Services Required
@@ -144,12 +141,11 @@ class Services extends Component {
                        <Item.Group divided>
                         {this.state.servicesRequired.map(serviceRequire => (                   
                            <Item>                          
-                               <Item.Content>
-                                <Item.Header>{serviceRequire.name}</Item.Header>
-                                <Item.Meta>{serviceRequire.contact}</Item.Meta>
+                               <Item.Content>                                
                                 <Item.Description>
                                   {serviceRequire.details}
                                 </Item.Description>
+                                <Item.Meta> Contact:  {serviceRequire.name}, {serviceRequire.contact}</Item.Meta>
                               </Item.Content>
                             </Item>
                         ))}
@@ -157,8 +153,8 @@ class Services extends Component {
                   </Card.Content>
                 </Card>
               </Segment>
-              <Segment>
-                <Card>
+              <Segment  className="services-segment">
+                <Card fluid>
                   <Card.Content>
                     <Card.Header>
                       Services Offered
@@ -168,12 +164,11 @@ class Services extends Component {
                   <Item.Group divided>
                     {this.state.servicesOffered.map(serviceOffer => (                   
                        <Item>                          
-                           <Item.Content>
-                            <Item.Header>{serviceOffer.name}</Item.Header>
-                            <Item.Meta>{serviceOffer.contact}</Item.Meta>
+                           <Item.Content> 
                             <Item.Description>
                               {serviceOffer.details}
                             </Item.Description>
+                            <Item.Meta>Contact : {serviceOffer.name}, {serviceOffer.contact}</Item.Meta>
                           </Item.Content>
                         </Item>
                     ))}
