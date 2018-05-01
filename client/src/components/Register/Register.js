@@ -46,10 +46,9 @@ class Register extends Component {
     const { username, password, useremail, password1 } = this.state;
     return (
       <div className="register-page">
-        <NavBar/>
-        {/*<div className="div-logo">
+        <div className="div-logo">
           <img src={logo} alt="logo" className="logo-register"/>
-        </div> */}
+        </div> 
         <div className="login-container">
           <form className="form-signin" onSubmit={this.onSubmit}>
             <h1 className="">Register</h1>

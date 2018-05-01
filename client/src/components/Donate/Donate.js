@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Donate.css';
 import { Card, Icon, Image, Grid } from 'semantic-ui-react'
 import Checkout from './Checkout';
+import NavBar from '../NavBar';
 import logo from "../../logo.png";
 import image1 from "./image1.png";
 import image2 from "./image2.jpg";
@@ -11,9 +12,7 @@ class Donate extends Component {
   render() {
     return (
       <div>
-        <div className="div-logo">
-          <img src={logo} alt="logo" className="logo-register"/>
-        </div> 
+      <NavBar />
       <div className="donate-container">
       <Grid>
       <Grid.Row columns={3}>

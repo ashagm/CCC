@@ -29,9 +29,13 @@ class NavBar extends Component {
 
 	render(){
 			return(
-				<Container>
+				<Container className="nav-container">
 			      <div className="div-logo">
+			       <Link to="/homepage" className="link-homepage">
+			        	<span className="text-secondary">BACK</span>
+			        </Link>
 			        <img src={logo} alt="logo" className="logo-register"/>
+			       
 			         <Link to="#" onClick={this.logout} className ="link-logout">
 			        	<span className="text-secondary">Logout</span>
 			        </Link>

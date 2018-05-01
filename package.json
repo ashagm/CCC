@@ -19,6 +19,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt-nodejs": "^0.0.3",
+    "cheerio": "^1.0.0-rc.2",
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "material-ui": "^0.20.0",
@@ -27,6 +28,7 @@
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "react-router-dom": "^4.2.2",
+    "socket.io": "^2.1.0",
     "stripe": "^5.8.0"
   }
 }

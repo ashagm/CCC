@@ -1,8 +1,8 @@
 .btn-tabs{
 	width: 150px;
 	height: 150px;
-	font-size: 16px;
-	color: blue;
+	font-size: 18px;
+	color: #000;
 	background-color: #fff;
 	margin: 20px;
 	border: 2px solid red;
@@ -10,9 +10,21 @@
 	border-radius: 30px;
 }
 
+.btn-tabs:hover{
+	box-shadow: 0 2px 35px 0 #d4d7dc;
+}
+
 .div-links{
-	width: 500px;
+	width: 700px;
 	margin: 30px auto;
-	border: 2px solid red;
+	/*border: 1px solid #fff;*/
 	text-align: center;
 }
+
+.btn-image{
+	width: 50px;
+	height: 50px;
+	display: block;
+	margin: 0 auto;
+}
+

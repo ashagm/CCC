@@ -32,16 +32,17 @@ class Dashboard extends Component {
 	render(){
 		return (			
 			<div className="dashboard-page">
-				<img src={logo} alt="logo" className="logo"/>
+				<img src={logo} alt="logo" className="logo-dashboard"/>
 				<h1 className="typed-text">					
 					  <a href="" className="typewrite" data-period="2000" 
 					  data-type=
-					  '[ "Welcome!!", 
+					  '[ 
 					  	"Care! Connect! Conquer!",
-					  	"What do you want to do?", 
-					  	"Search for Doctors?", 
-					  	"Looking for answers?",
-					  	"Have something to share?"
+					  	"An online portal to connect cancer patients and caregivers!",
+					  	"Search for Doctors", 
+					  	"Chat with others",
+					  	"Ask others questions",
+					  	"Share your thoughts"
 					   ]'>
 					    <span className="wrap"></span>
 					  </a>

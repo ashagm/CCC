@@ -5,3 +5,20 @@
 	font-size: 20px;
 	font-weight: bold;
 }
+
+.link-homepage{	
+	float: left;
+	position: absolute;
+	left: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	display: inline-block;
+	padding: 10px;
+	background-color: red;
+	border: 2px solid red;
+	border-radius: 20px;
+}
+
+.nav-container{
+	position: relative;
+}

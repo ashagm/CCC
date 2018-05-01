@@ -10,11 +10,12 @@
   	font-size: 30px;
 }
 
-.typed-text{
-	
+.typewrite{
+	font-size: 40px;
+	margin: 20px;
 }
 
-.logo{
+.logo-dashboard{
 	margin-top: 130px;
 	height: 100px;
 	width: 150px;

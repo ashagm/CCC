@@ -10,6 +10,7 @@ import Chat from './components/Chat';
 import NavBar from './components/NavBar';
 import Services from './components/Services';
 import Questions from './components/Questions';
+import News from './components/News';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const App = () => (
@@ -25,6 +26,7 @@ const App = () => (
         <Route path='/chat' component={Chat}/>
         <Route path='/services' component={Services}/>
         <Route path='/questions' component={Questions}/>
+        <Route path='/news' component={News}/>
       </Switch>
     </MuiThemeProvider>
   </Router>

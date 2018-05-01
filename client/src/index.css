@@ -5,18 +5,8 @@ body {
 }
 
 #root{
-	background-color: #083372;
+	background-color: #a2b5cd;
 	background-repeat: repeat;
 	background-size: cover;
 	height: 100vh; 
 }
-
-/*.btn{
-	font-family: "National2, Helvetica Neue";
-	font-size: 24px;
-	font-weight: bold;
-	width: 200px;
-	margin-right: 20px;
-	border: 2px solid red;
-	border-radius: 50px;
-}*/
