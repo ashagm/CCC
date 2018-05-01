@@ -77,10 +77,10 @@ class Questions extends Component {
  
   render() {
     return (
-      <div>
+      <div class="questions-container">
       <NavBar />
          <Grid columns='equal'>
-            <Grid.Column>
+            <Grid.Column width={4}>
               <Segment>
                 <Card>
                   <Card.Content>
@@ -113,32 +113,32 @@ class Questions extends Component {
               </Segment>
             </Grid.Column>
             <Grid.Column width={12}>
-              <Segment>
-                <Card>
+              <Segment className="questions-segment">
+                <Card centered fluid className="questions-card">
                   <Card.Content>
                     <Card.Header>
                       Questions 
                     </Card.Header>
                    </Card.Content> 
-                  <Card.Content>
+                  <Card.Content className="questions-content">
                     <Item.Group divided>
-                        {this.state.questionsAsked.map(question => (                   
-                           <Item>                          
-                               <Item.Content>
-                                <Item.Header><Link id={question._id} to="/questions"> {question.question}</Link></Item.Header>
-                                <Item.Description>
-                                  <Item.Extra> Asked by: {question.name} in Category: {question.category} 
-                                    <Link to="/questions" className="btn" id={"btn_" + question._id} onClick={() => this.handleCommentBtn(question._id)}>Comment</Link> 
-                                  </Item.Extra>                                  
-                                </Item.Description>
-                                {this.state.isHidden ? (
-                                  <Item.Description>
-                                    <Comments id={question._id}/>
-                                  </Item.Description>
-                                ) : (null)}
-                              </Item.Content>
-                            </Item>
-                        ))}
+                      {this.state.questionsAsked.map(question => (                   
+                        <Item>                          
+                         <Item.Content>
+                          <Item.Header><Link id={question._id} to="/questions"> {question.question}</Link></Item.Header>
+                          <Item.Description>
+                            <Item.Extra> Asked by: {question.name} in Category: {question.category} 
+                              <Link to="/questions" className="btn" id={"btn_" + question._id} onClick={() => this.handleCommentBtn(question._id)}>Comment</Link> 
+                            </Item.Extra>                                  
+                          </Item.Description>
+                          {this.state.isHidden ? (
+                            <Item.Description>
+                              <Comments id={question._id}/>
+                            </Item.Description>
+                          ) : (null)}
+                        </Item.Content>
+                          </Item>
+                      ))}
                     </Item.Group>  
                   </Card.Content>
                 </Card>
