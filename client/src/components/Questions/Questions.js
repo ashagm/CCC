@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link } from 'react-router-dom';
 import './Questions.css';
 import API from "../../utils/API";
 import logo from "../../logo.png";
 import NavBar from "../NavBar";
+import Comments from "../Comments";
 import { Card, Segment, Form, Grid, Input, Item, TextArea, Button } from 'semantic-ui-react';
 
 class Questions extends Component {
@@ -11,6 +13,7 @@ class Questions extends Component {
    constructor() {
     super();
     this.state = {
+      isHidden: false,
       name: '',
       category: '',
       question: '',
@@ -67,6 +70,10 @@ class Questions extends Component {
     });
    
   }
+
+  handleCommentBtn = () => {
+    this.state.isHidden ? this.setState({'isHidden' : false}) : this.setState({'isHidden' : true})
+  }
  
   render() {
     return (
@@ -118,10 +125,17 @@ class Questions extends Component {
                         {this.state.questionsAsked.map(question => (                   
                            <Item>                          
                                <Item.Content>
-                                <Item.Header>{question.question}</Item.Header>
+                                <Item.Header><Link id={question._id} to="/questions"> {question.question}</Link></Item.Header>
                                 <Item.Description>
-                                  <Item.Extra> Asked by: {question.name} in Category: {question.category} </Item.Extra>
+                                  <Item.Extra> Asked by: {question.name} in Category: {question.category} 
+                                    <Link to="/questions" className="btn" id={"btn_" + question._id} onClick={() => this.handleCommentBtn(question._id)}>Comment</Link> 
+                                  </Item.Extra>                                  
                                 </Item.Description>
+                                {this.state.isHidden ? (
+                                  <Item.Description>
+                                    <Comments id={question._id}/>
+                                  </Item.Description>
+                                ) : (null)}
                               </Item.Content>
                             </Item>
                         ))}
