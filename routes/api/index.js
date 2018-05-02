@@ -1,11 +1,11 @@
 const router = require("express").Router();
-const authRoutes = require("./auth");
-const docRoutes = require("./doctor");
-const paymentRoutes = require("./payment");
-const serviceRoutes = require("./service");
-const questionRoutes = require("./question");
-const commentRoutes = require("./comment");
-const newsRoutes = require("./news");
+const authRoutes = require("./Auth/");
+const docRoutes = require("./Doctor");
+const paymentRoutes = require("./Payment");
+const serviceRoutes = require("./Service");
+const questionRoutes = require("./Question");
+const commentRoutes = require("./Comment");
+const newsRoutes = require("./News");
 
 router.use("/auth", authRoutes);
 router.use("/doctor", docRoutes);
