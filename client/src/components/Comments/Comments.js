@@ -33,7 +33,11 @@ class Comments extends Component {
     console.log(this.state);
   }
 
-  componentDidMount(){
+  componentDidMount(){ 
+    this.fetchAllComments();
+  }
+
+  fetchAllComments(){
     console.log("Component did mounting....", this.props.id);
     axios.get('/api/comment/all' + this.props.id)
       .then(resAllComments => {
@@ -53,7 +57,15 @@ class Comments extends Component {
       .then((result) => {
         console.log(result.data);
         this.setState({ message: 'CommentSubmitted!' });
-        this.setState('comment', '');
+        // this.setState('comment', '');
+        // this.setState("commentsArr", result.data);
+        this.setState({
+          commentsArr: [...this.state.commentsArr, {
+              _id: this.props.id,
+              comment: this.state.comment,
+              name: this.state.name,
+          }]})
+
         this.props.history.push('/questions')
     })
       .catch((error) => {
@@ -64,10 +76,11 @@ class Comments extends Component {
   } 
 
   render() {
+    console.log("Calling render in comments....");
     return (
       <div>
        {this.state.commentsArr.map(comment => (  
-          <Comment className='comment-div'>
+          <Comment className='comment-div' key={comment._id}>
             <Comment.Content>
               <Comment.Text className="comment-text">{comment.comment}</Comment.Text>
               <Comment.Author as='a'>By: {comment.name}</Comment.Author>              

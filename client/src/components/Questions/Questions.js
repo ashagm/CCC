@@ -18,7 +18,8 @@ class Questions extends Component {
       category: '',
       question: '',
       message: '',
-      questionsAsked: []
+      questionsAsked: [],
+      hideCommentIds: []
     };
   }
 
@@ -26,13 +27,13 @@ class Questions extends Component {
     const state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   componentWillMount(){
     console.log("....mounting services");
     let username = localStorage.getItem("username");
-    console.log("username", username);
+    // console.log("username", username);
     this.setState({"name": username});
   }
 
@@ -55,11 +56,11 @@ class Questions extends Component {
     const { name, category, question } = this.state;
     console.log("State", this.state);
     const username = localStorage.getItem("username");
-    console.log(username);
+    // console.log(username);
 
     axios.post('/api/question/create', { name, category, question})
       .then((result) => {
-        console.log(result.data);
+        // console.log(result.data);
         this.setState({ message: 'Submitted!' });
         this.props.history.push('/questions')
     })
@@ -150,5 +151,14 @@ class Questions extends Component {
     );
   }
 }
+
+{/*{
+  this.state.hideCommentIds.find(id => id === question._id) ?
+    (<Item.Description>
+      <Comments id={question._id}/>
+    </Item.Description>) : 
+    (this.pushId)
+
+}*/}
 
 export default Questions;
