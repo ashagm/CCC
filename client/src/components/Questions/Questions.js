@@ -32,22 +32,18 @@ class Questions extends Component {
     const state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
-    // console.log(this.state);
   }
 
   componentWillMount(){
-    // console.log("....mounting services");
     let username = localStorage.getItem("username");
     // console.log("username", username);
     this.setState({"name": username});
   }
 
   componentDidMount(){
-    // console.log("Component did mounting....");
     axios.get('/api/question/all')
       .then(resAskedQuestions => {
         // console.log("got Services, resAskedQuestions", resAskedQuestions.data);
-        // console.log("Questions Asked", this.state.questionsAsked);
         this.setState({ questionsAsked: resAskedQuestions.data});
         
       })
@@ -59,14 +55,20 @@ class Questions extends Component {
     e.preventDefault();
 
     const { name, category, question } = this.state;
-    // console.log("State", this.state);
     const username = localStorage.getItem("username");
-    // console.log(username);
 
     axios.post('/api/question/create', { name, category, question})
       .then((result) => {
         // console.log(result.data);
         this.setState({ message: 'Submitted!' });
+        this.setState({
+          questionsAsked: [...this.state.questionsAsked, {
+              _id: this.state._id,
+              name: this.state.name,
+              category: this.state.category,
+              question: this.state.question,
+          }]})
+
         this.props.history.push('/questions')
     })
       .catch((error) => {
@@ -78,8 +80,30 @@ class Questions extends Component {
   }
 
   handleCommentBtn = (propsId) => {
-    this.state.isHidden ? this.setState({'isHidden' : false}) : this.setState({'isHidden' : true})
-    console.log(propsId);
+    
+    console.log("You clicked on propsId", propsId);
+    // this.state.hideIds.push(propsId);
+    console.log("CommentID array", this.state.hideIds);
+
+    if(this.state.hideIds.find(id => id === propsId)){
+      this.setState({'isHidden' : true});
+      this.state.hideIds.pop(propsId);
+    }else{
+      // this.setState({ hideIds: [...this.state.hideIds, propsId]});
+      this.setState({ 'isHidden' : false});
+      this.state.hideIds.push(propsId);
+      
+    }
+
+        // let newIds = { hideIds: [...this.state.hideIds, propsId]}
+    // this.setState(newIds);
+    // this.setState(this.state.hideIds => (
+    // {
+    //   hideIds: [...this.state.hideIds, propsId]
+    // }))
+    
+    // this.state.isHidden ? this.setState({'isHidden' : false}) : this.setState({'isHidden' : true})
+    // console.log(propsId);
 
     // if(this.state.hideCommentIds.find(id => id === propsId)){
     //   this.setState({ hideCommentIds: [...this.state.hideCommentIds, propsId]});
@@ -87,14 +111,7 @@ class Questions extends Component {
     //   this.setState({ hideCommentIds: [...this.state.hideCommentIds, propsId]});
     //   this.setState({ 'isHidden' : true});
     // }
-
-    // console.log("COmmentID array", this.state.hideIds);
-    // if(this.state.hideIds.find(id => id === propsId)){
-    //   this.setState({'isHidden' : false});
-    // }else{
-    //   this.setState({ hideIds: [...this.state.hideIds, propsId]});
-    //   this.setState({ 'isHidden' : true});
-    // }
+   
 
 
     // this.setState({ hideCommentIds: [...this.state.hideCommentIds, { 'isHidden' : false, 'id' : propsId}]})
@@ -106,7 +123,6 @@ class Questions extends Component {
 
  
   render() {
-    // console.log("props", this.props);
     return (
       <div className="questions-container">
       <NavBar />
@@ -162,11 +178,19 @@ class Questions extends Component {
                               <Link to="#" className="btn-comment" id={"btn_" + question._id} onClick={() => this.handleCommentBtn(question._id)}>Comment</Link> 
                             </Item.Extra>                                  
                           </Item.Description>
-                          {this.state.isHidden ? (
+                         {/*} {this.state.isHidden ? (
                             <Item.Description >
                               <Comments id={question._id}/>
                             </Item.Description>
-                          ) : (null)}
+                          ) : (null)} */}
+
+                          {this.state.hideIds.find(id => id === question._id) && !this.state.isHidden ? (
+                            <Item.Description >
+                              <Comments id={question._id}/>
+                            </Item.Description>
+                          ) : (<Item.Description >
+                              
+                            </Item.Description>)}
                         </Item.Content>
                           </Item>
                       ))}

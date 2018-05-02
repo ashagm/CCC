@@ -16,8 +16,8 @@ class NavBar extends Component {
 	
 	logout = (e) => {
 		e.preventDefault();
-		console.log("logout button.");		
-		console.log("logout button token" + localStorage.getItem('jwtToken'));
+		// console.log("logout button.");		
+		// console.log("logout button token" + localStorage.getItem('jwtToken'));
 
 		 axios.get('/api/auth/logout')
 	      .then((result) => {
@@ -39,7 +39,7 @@ class NavBar extends Component {
 	}
 
 	render(){
-		console.log("props in nav", this.props);
+		// console.log("props in nav", this.props);
 			return(
 				<Container className="nav-container">
 			      <div className="div-logo">

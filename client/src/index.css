@@ -8,5 +8,5 @@ body {
 	background-color: #7a8b8b;
 	background-repeat: repeat;
 	background-size: cover;
-	height: 100vh; 
+	min-height: 100vh; 
 }
