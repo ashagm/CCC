@@ -16,6 +16,7 @@ class Login extends Component {
       message: ''
     };
   }
+  
   onChange = (e) => {
     const state = this.state
     state[e.target.name] = e.target.value;
@@ -24,7 +25,6 @@ class Login extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-
     const { useremail, password } = this.state;
 
     axios.post('/api/auth/login', { useremail, password })
@@ -34,7 +34,7 @@ class Login extends Component {
         localStorage.setItem('mySession', result.data.mySession);
         localStorage.setItem('username', result.data.mySession.username);
         this.setState({ message: '' });
-        this.props.history.push('/homepage')
+        this.props.history.push('/homepage');
       })
       .catch((error) => {
         if(error.response.status === 401) {
@@ -45,6 +45,7 @@ class Login extends Component {
 
   render() {
     const { useremail, password, message } = this.state;
+    console.log("props", this.props);
     return (
        <div className="register-page">
         <div className="div-logo">

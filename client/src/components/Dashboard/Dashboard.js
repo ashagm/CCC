@@ -8,26 +8,26 @@ import "./type.js"
 
 class Dashboard extends Component {
 
-	logout = (e) => {
-		e.preventDefault();
-		console.log("logout button.");		
-		console.log("logout button token" + localStorage.getItem('jwtToken'));
+	// logout = (e) => {
+	// 	e.preventDefault();
+	// 	console.log("logout button.");		
+	// 	console.log("logout button token" + localStorage.getItem('jwtToken'));
 
-		 axios.get('/api/auth/logout')
-	      .then((result) => {
-	      	console.log("logged out", result)
-	        localStorage.setItem('jwtToken', "");
-	        console.log("token", localStorage.getItem('jwtToken'));
-	        this.setState({ message: '' });
-	        this.props.history.push('/login')
-	      })
-	      .catch((error) => {
-	        if(error.response.status === 401) {
-	          this.setState({ message: 'Logout failed' });
-	        }
-      	});
+	// 	 axios.get('/api/auth/logout')
+	//       .then((result) => {
+	//       	console.log("logged out", result)
+	//         localStorage.setItem('jwtToken', "");
+	//         console.log("token", localStorage.getItem('jwtToken'));
+	//         this.setState({ message: '' });
+	//         this.props.history.push('/login')
+	//       })
+	//       .catch((error) => {
+	//         if(error.response.status === 401) {
+	//           this.setState({ message: 'Logout failed' });
+	//         }
+ //      	});
 
-	}
+	// }
 
 	render(){
 		return (			
@@ -38,11 +38,12 @@ class Dashboard extends Component {
 					  data-type=
 					  '[ 
 					  	"Care! Connect! Conquer!",
-					  	"An online portal to connect cancer patients and caregivers!",
+					  	"Connect with cancer patients and caregivers!",
 					  	"Search for Doctors", 
 					  	"Chat with others",
-					  	"Ask others questions",
-					  	"Share your thoughts"
+					  	"Ask questions",
+					  	"Share your thoughts",
+					  	"Find latest Cancer related news!"
 					   ]'>
 					    <span className="wrap"></span>
 					  </a>

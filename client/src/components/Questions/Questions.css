@@ -15,3 +15,7 @@
 .ui.segment.questions-segment{
 	width: 100%;
 }
+
+.btn-comment{
+	float: right;
+}

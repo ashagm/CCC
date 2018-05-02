@@ -76,8 +76,9 @@ class Questions extends Component {
   }
  
   render() {
+    console.log("props", this.props);
     return (
-      <div class="questions-container">
+      <div className="questions-container">
       <NavBar />
          <Grid columns='equal'>
             <Grid.Column width={4}>
@@ -123,12 +124,12 @@ class Questions extends Component {
                   <Card.Content className="questions-content">
                     <Item.Group divided>
                       {this.state.questionsAsked.map(question => (                   
-                        <Item>                          
+                        <Item key={question._id}>                          
                          <Item.Content>
                           <Item.Header><Link id={question._id} to="/questions"> {question.question}</Link></Item.Header>
                           <Item.Description>
                             <Item.Extra> Asked by: {question.name} in Category: {question.category} 
-                              <Link to="/questions" className="btn" id={"btn_" + question._id} onClick={() => this.handleCommentBtn(question._id)}>Comment</Link> 
+                              <Link to="#" className="btn-comment" id={"btn_" + question._id} onClick={() => this.handleCommentBtn(question._id)}>Comment</Link> 
                             </Item.Extra>                                  
                           </Item.Description>
                           {this.state.isHidden ? (

@@ -85,7 +85,7 @@ class Doctors extends Component {
               {this.state.savedDocs ? (
                 <Item.Group divided>
                   {this.state.savedDoctors.map(savedDoctor => (                   
-                    <Item className="doc-div">                        
+                    <Item className="doc-div" key={savedDoctor._id} id={savedDoctor._id}>                        
                         <Item.Content> 
                             <Item.Header style={{color: "rgb(95, 124, 162)"}}> 
                                Dr. {savedDoctor.name}

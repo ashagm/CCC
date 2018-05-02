@@ -8,6 +8,21 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const cors = require('cors');
 
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+  console.log('a user got connected!!');
+  
+  socket.on('chat message', function(msg){
+    console.log('message: ' + msg);
+  });
+
+  socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+});
+
 app.use(logger('dev'));
 
 // Configure body parser for AJAX requests
