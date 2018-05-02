@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from "../../logo.png";
 import { RaisedButton, TextField} from 'material-ui';
@@ -25,8 +26,6 @@ class Register extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting Register..." + this.state);
-
     const { username, useremail, password, password1 } = this.state;
 
     axios.post('/api/auth/register', 
@@ -44,10 +43,10 @@ class Register extends Component {
 
   render() {
     const { username, password, useremail, password1 } = this.state;
-    console.log(this.props);
+
     return (
       <div className="register-page">
-        <div className="div-logo">
+        <div className="div-register-logo">
           <img src={logo} alt="logo" className="logo-register"/>
         </div> 
         <div className="login-container">
@@ -59,6 +58,9 @@ class Register extends Component {
                 className="form-control" 
                 name="username" 
                 value={username} 
+                inputStyle={{
+                  color: '#fff'
+                }}
                 onChange={this.onChange} required
               />
               <br/>
@@ -68,6 +70,9 @@ class Register extends Component {
                 className="form-control" 
                 name="useremail" 
                 value={useremail} 
+                inputStyle={{
+                  color: '#fff'
+                }}
                 onChange={this.onChange} required
               />
               <br />
@@ -78,6 +83,9 @@ class Register extends Component {
                 name="password" 
                 value={password} 
                 type="password" 
+                inputStyle={{
+                  color: '#fff'
+                }}
                 onChange={this.onChange} required
               />
               <br />
@@ -88,6 +96,9 @@ class Register extends Component {
                 className="form-control" 
                 name="password1" 
                 value={password1} 
+                inputStyle={{
+                  color: '#fff'
+                }}
                 onChange={this.onChange} required
               /><br /> 
               <br /><br />
@@ -97,9 +108,13 @@ class Register extends Component {
               <RaisedButton 
                 label="REGISTER" 
                 className="btn-register"
-                labelColor="#395399"
                 type="submit" 
-              />          
+              />  
+               <p>
+                Already a member? &nbsp;&nbsp;
+                <Link to="/login">
+                <span className="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Click here</Link>
+              </p>        
           </form>
           </div>
       </div>

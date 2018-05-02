@@ -48,7 +48,7 @@ class Login extends Component {
     console.log("props", this.props);
     return (
        <div className="register-page">
-        <div className="div-logo">
+        <div className="div-register-logo">
           <img src={logo} alt="logo" className="logo-register"/>
         </div>
         <div className="login-container">
@@ -67,6 +67,9 @@ class Login extends Component {
             className="form-control" 
             name="useremail" 
             value={useremail} 
+            inputStyle={{
+              color: '#fff'
+            }}
             onChange={this.onChange} required
           />  
           <br />         
@@ -77,6 +80,9 @@ class Login extends Component {
             name="password" 
             value={password} 
             type="password" 
+            inputStyle={{
+              color: '#fff'
+            }}
             onChange={this.onChange} required
           />
           <br /> <br />
@@ -84,7 +90,6 @@ class Login extends Component {
             className="btn btn-lg btn-primary btn-block" 
             label="LOGIN" 
             className="btn-register"
-            labelColor="#395399"
             type="submit" />
           <br/><br/>
           <p>

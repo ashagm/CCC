@@ -8,32 +8,11 @@ import "./type.js"
 
 class Dashboard extends Component {
 
-	// logout = (e) => {
-	// 	e.preventDefault();
-	// 	console.log("logout button.");		
-	// 	console.log("logout button token" + localStorage.getItem('jwtToken'));
-
-	// 	 axios.get('/api/auth/logout')
-	//       .then((result) => {
-	//       	console.log("logged out", result)
-	//         localStorage.setItem('jwtToken', "");
-	//         console.log("token", localStorage.getItem('jwtToken'));
-	//         this.setState({ message: '' });
-	//         this.props.history.push('/login')
-	//       })
-	//       .catch((error) => {
-	//         if(error.response.status === 401) {
-	//           this.setState({ message: 'Logout failed' });
-	//         }
- //      	});
-
-	// }
-
 	render(){
 		return (			
 			<div className="dashboard-page">
 				<img src={logo} alt="logo" className="logo-dashboard"/>
-				<h1 className="typed-text">					
+				<div className="typed-text">					
 					  <a href="" className="typewrite" data-period="2000" 
 					  data-type=
 					  '[ 
@@ -47,9 +26,21 @@ class Dashboard extends Component {
 					   ]'>
 					    <span className="wrap"></span>
 					  </a>
-				</h1>
-				<RaisedButton label="Log In" className="btn-dashboard" href="/login" labelColor="#395399"/>
-				<RaisedButton label="Sign up" className="btn-dashboard" href="/register" labelColor="#395399"/>
+				</div>
+				<RaisedButton 
+					label="Log In" 
+					className="btn-dashboard" 
+					href="/login"
+					backgroundColor="#fffacd"
+					labelColor="#000"
+				/>
+				<RaisedButton 
+					label="Sign up" 
+					className="btn-dashboard" 
+					href="/register"
+					backgroundColor="#fffacd"
+					labelColor="#000"
+				/>
 			</div>  		 
 		);
   	}

@@ -72,6 +72,27 @@ class Services extends Component {
       .then((result) => {
         console.log(result.data);
         this.setState({ message: 'Submitted!' });
+
+        if(servicetype == 'offer'){
+         this.setState({
+          servicesOffered: [...this.state.servicesOffered, {
+              _id: this.state._id,
+              name: this.state.name,
+              contact: this.state.contact,
+              details: this.state.details,
+              servicetype : this.state.servicetype
+          }]})
+       }else{
+        this.setState({
+          servicesRequired: [...this.state.servicesRequired, {
+              _id: this.state._id,
+              name: this.state.name,
+              contact: this.state.contact,
+              details: this.state.details,
+              servicetype : this.state.servicetype
+          }]})
+
+       }
         this.props.history.push('/services')
     })
       .catch((error) => {

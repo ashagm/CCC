@@ -6,6 +6,11 @@
 	font-weight: bold;
 }
 
+.div-logo{
+  margin-left: 500px;
+  padding: 20px 0px;
+}
+
 .link-homepage{	
 	float: left;
 	position: absolute;
