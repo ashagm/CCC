@@ -4,8 +4,9 @@ import {Link } from 'react-router-dom';
 import './Comments.css';
 import API from "../../utils/API";
 import logo from "../../logo.png";
+import avatar from "./avatar.png";
 
-import {Comment, Segment, Form, Input,TextArea, Button, Divider } from 'semantic-ui-react';
+import {Comment, Segment, Form, Input,TextArea, Button, Divider, Header} from 'semantic-ui-react';
 
 class Comments extends Component {
   
@@ -75,16 +76,19 @@ class Comments extends Component {
   } 
 
   render() {
-    // console.log("Calling render in comments....");
     return (
       <div>
+      <Header as='h3' dividing>Comments</Header>
        {this.state.commentsArr.map(comment => (  
-          <Comment className='comment-div' key={comment._id}>
-            <Comment.Content>
-              <Comment.Text className="comment-text">{comment.comment}</Comment.Text>
-              <Comment.Author as='a'>By: {comment.name}</Comment.Author>              
-            </Comment.Content>
-          </Comment>
+              <Comment.Group size='small'>                
+                <Comment className='comment-div' key={comment._id}>
+                  <Comment.Avatar as='a' src={avatar} />
+                  <Comment.Content>
+                    <Comment.Author as='a'>{comment.name}</Comment.Author>
+                    <Comment.Text>{comment.comment}</Comment.Text>
+                  </Comment.Content>
+                </Comment>
+              </Comment.Group>
           
         ))} 
         <Form reply onSubmit={this.onSubmit}>

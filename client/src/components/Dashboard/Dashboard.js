@@ -13,7 +13,7 @@ class Dashboard extends Component {
 			<div className="dashboard-page">
 				<img src={logo} alt="logo" className="logo-dashboard"/>
 				<div className="typed-text">					
-					  <a href="" className="typewrite" data-period="2000" 
+					  <a href="" className="typewrite" data-period="1000" 
 					  data-type=
 					  '[ 
 					  	"Care! Connect! Conquer!",

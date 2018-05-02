@@ -164,7 +164,7 @@ class Questions extends Component {
                 <Card centered fluid className="questions-card">
                   <Card.Content>
                     <Card.Header>
-                      Questions 
+                      Previously Asked Questions 
                     </Card.Header>
                    </Card.Content> 
                   <Card.Content className="questions-content">
