@@ -20,9 +20,9 @@ class Comments extends Component {
   }
 
   componentWillMount(){
-    console.log("....mounting services");
+    // console.log("....mounting services");
     let username = localStorage.getItem("username");
-    console.log("username", username);
+    // console.log("username", username);
     this.setState({"name": username});
   }
 
@@ -30,7 +30,7 @@ class Comments extends Component {
     const state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   componentDidMount(){ 
@@ -38,10 +38,10 @@ class Comments extends Component {
   }
 
   fetchAllComments(){
-    console.log("Component did mounting....", this.props.id);
+    // console.log("Component did mounting....", this.props.id);
     axios.get('/api/comment/all' + this.props.id)
       .then(resAllComments => {
-        console.log("got Comments, commentsArr", resAllComments.data);
+        // console.log("got Comments, commentsArr", resAllComments.data);
         // console.log("Questions Asked", this.state.questionsAsked);
         this.setState({ commentsArr: resAllComments.data});        
       })
@@ -55,10 +55,9 @@ class Comments extends Component {
     let name = this.state.name;
     axios.post('/api/comment/create', { q_id, comment, name})
       .then((result) => {
-        console.log(result.data);
+        // console.log(result.data);
         this.setState({ message: 'CommentSubmitted!' });
         // this.setState('comment', '');
-        // this.setState("commentsArr", result.data);
         this.setState({
           commentsArr: [...this.state.commentsArr, {
               _id: this.props.id,
@@ -76,7 +75,7 @@ class Comments extends Component {
   } 
 
   render() {
-    console.log("Calling render in comments....");
+    // console.log("Calling render in comments....");
     return (
       <div>
        {this.state.commentsArr.map(comment => (  

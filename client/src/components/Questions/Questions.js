@@ -14,12 +14,17 @@ class Questions extends Component {
     super();
     this.state = {
       isHidden: false,
+      hideIds : [],
       name: '',
       category: '',
       question: '',
       message: '',
       questionsAsked: [],
-      hideCommentIds: []
+      hideCommentIds: [
+      {
+        id : '',
+        isHidden: true
+      }]
     };
   }
 
@@ -31,17 +36,17 @@ class Questions extends Component {
   }
 
   componentWillMount(){
-    console.log("....mounting services");
+    // console.log("....mounting services");
     let username = localStorage.getItem("username");
     // console.log("username", username);
     this.setState({"name": username});
   }
 
   componentDidMount(){
-    console.log("Component did mounting....");
+    // console.log("Component did mounting....");
     axios.get('/api/question/all')
       .then(resAskedQuestions => {
-        console.log("got Services, resAskedQuestions", resAskedQuestions.data);
+        // console.log("got Services, resAskedQuestions", resAskedQuestions.data);
         // console.log("Questions Asked", this.state.questionsAsked);
         this.setState({ questionsAsked: resAskedQuestions.data});
         
@@ -54,7 +59,7 @@ class Questions extends Component {
     e.preventDefault();
 
     const { name, category, question } = this.state;
-    console.log("State", this.state);
+    // console.log("State", this.state);
     const username = localStorage.getItem("username");
     // console.log(username);
 
@@ -72,12 +77,36 @@ class Questions extends Component {
    
   }
 
-  handleCommentBtn = () => {
+  handleCommentBtn = (propsId) => {
     this.state.isHidden ? this.setState({'isHidden' : false}) : this.setState({'isHidden' : true})
+    console.log(propsId);
+
+    // if(this.state.hideCommentIds.find(id => id === propsId)){
+    //   this.setState({ hideCommentIds: [...this.state.hideCommentIds, propsId]});
+    // }else{
+    //   this.setState({ hideCommentIds: [...this.state.hideCommentIds, propsId]});
+    //   this.setState({ 'isHidden' : true});
+    // }
+
+    // console.log("COmmentID array", this.state.hideIds);
+    // if(this.state.hideIds.find(id => id === propsId)){
+    //   this.setState({'isHidden' : false});
+    // }else{
+    //   this.setState({ hideIds: [...this.state.hideIds, propsId]});
+    //   this.setState({ 'isHidden' : true});
+    // }
+
+
+    // this.setState({ hideCommentIds: [...this.state.hideCommentIds, { 'isHidden' : false, 'id' : propsId}]})
+
+    // console.log("after: COmmentID array", this.state.hideIds);
   }
+
+
+
  
   render() {
-    console.log("props", this.props);
+    // console.log("props", this.props);
     return (
       <div className="questions-container">
       <NavBar />
@@ -134,14 +163,14 @@ class Questions extends Component {
                             </Item.Extra>                                  
                           </Item.Description>
                           {this.state.isHidden ? (
-                            <Item.Description>
+                            <Item.Description >
                               <Comments id={question._id}/>
                             </Item.Description>
                           ) : (null)}
                         </Item.Content>
                           </Item>
                       ))}
-                    </Item.Group>  
+                  </Item.Group>
                   </Card.Content>
                 </Card>
               </Segment>
@@ -152,13 +181,6 @@ class Questions extends Component {
   }
 }
 
-{/*{
-  this.state.hideCommentIds.find(id => id === question._id) ?
-    (<Item.Description>
-      <Comments id={question._id}/>
-    </Item.Description>) : 
-    (this.pushId)
 
-}*/}
 
 export default Questions;
