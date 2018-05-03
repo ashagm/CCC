@@ -92,6 +92,11 @@ class Services extends Component {
           }]})
 
        }
+
+        this.setState({
+            contact: "",
+            details: ""
+          });
         this.props.history.push('/services')
     })
       .catch((error) => {
@@ -127,6 +132,7 @@ class Services extends Component {
                     control={Input} 
                     label='Contact' 
                     name='contact'
+                    value={this.state.contact}
                     placeholder='Contact' onChange={this.onChange} />
                   </Form.Group>
                    <Form.Group grouped>
@@ -142,7 +148,7 @@ class Services extends Component {
                     value='require'
                     name='servicetype' onChange={this.onChange} />
                   </Form.Group>
-                  <Form.Field id='form-textarea-control-details' control={TextArea} label='Details' name="details" placeholder='Give more details' onChange={this.onChange} />
+                  <Form.Field id='form-textarea-control-details' control={TextArea} label='Details' name="details" value={this.state.details} onChange={this.onChange} />
                   <Form.Field id='form-button-control-public' control={Button} content='Confirm' />
                 </Form>                  
                   </Card.Content>
