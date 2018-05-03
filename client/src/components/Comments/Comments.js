@@ -44,7 +44,6 @@ class Comments extends Component {
         this.setState({ commentsArr: resAllComments.data});        
       })
       .catch(err => console.log(err));  
-
   }
 
   onSubmit = (e) => {
@@ -55,14 +54,15 @@ class Comments extends Component {
       .then((result) => {
         // console.log(result.data);
         this.setState({ message: 'CommentSubmitted!' });
-        // this.setState('comment', '');
+
         this.setState({
           commentsArr: [...this.state.commentsArr, {
               _id: this.props.id,
               comment: this.state.comment,
               name: this.state.name,
           }]})
-
+        
+        this.setState({comment: ''})
         this.props.history.push('/questions')
     })
       .catch((error) => {
@@ -94,6 +94,7 @@ class Comments extends Component {
           control={TextArea} 
           label='Comment' 
           name="comment" 
+          value={this.state.comment}
           placeholder='Add your comment' 
           onChange={this.onChange} />
           <Button content='Add Reply' labelPosition='left' icon='edit' primary />
