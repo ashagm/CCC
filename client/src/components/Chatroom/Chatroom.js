@@ -38,6 +38,14 @@ class Chatroom extends React.Component{
 
         }
     }
+
+    componentDidMount(){
+        console.log("....mounting chat");
+        let username = localStorage.getItem("username");
+        console.log("username", username);
+        this.setState({"username": username});
+    }
+    
     render(){
         return (
             <div>

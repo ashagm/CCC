@@ -67,6 +67,11 @@ class Questions extends Component {
               question: this.state.question,
           }]})
 
+          this.setState({
+            category: "General",
+            question: ""
+          });
+
         this.props.history.push('/questions')
     })
       .catch((error) => {
@@ -93,33 +98,9 @@ class Questions extends Component {
       
     }
 
-        // let newIds = { hideIds: [...this.state.hideIds, propsId]}
-    // this.setState(newIds);
-    // this.setState(this.state.hideIds => (
-    // {
-    //   hideIds: [...this.state.hideIds, propsId]
-    // }))
-    
-    // this.state.isHidden ? this.setState({'isHidden' : false}) : this.setState({'isHidden' : true})
-    // console.log(propsId);
-
-    // if(this.state.hideCommentIds.find(id => id === propsId)){
-    //   this.setState({ hideCommentIds: [...this.state.hideCommentIds, propsId]});
-    // }else{
-    //   this.setState({ hideCommentIds: [...this.state.hideCommentIds, propsId]});
-    //   this.setState({ 'isHidden' : true});
-    // }
-   
-
-
-    // this.setState({ hideCommentIds: [...this.state.hideCommentIds, { 'isHidden' : false, 'id' : propsId}]})
-
-    // console.log("after: COmmentID array", this.state.hideIds);
   }
 
 
-
- 
   render() {
     return (
       <div className="questions-container">
@@ -141,7 +122,7 @@ class Questions extends Component {
                       placeholder='User name' onChange={this.onChange} />
                    </Form.Group>  
                    <Form.Group widths='equal'>  
-                    <Form.Field label='Select category' name="category" control='select' onChange={this.onChange}>
+                    <Form.Field label='Select category' name="category" control='select' value={this.state.category ? this.state.category : ''} onChange={this.onChange}>
                       <option value='General'>General</option>
                       <option value='Services'>Services</option>
                       <option value='Treatment'>Treatment</option>
@@ -150,7 +131,7 @@ class Questions extends Component {
                       <option value='Others'>Others</option>
                     </Form.Field>
                   </Form.Group>
-                  <Form.Field id='form-textarea-control-question' control={TextArea} label='Question' name="question" placeholder='Ask your question' onChange={this.onChange} />
+                  <Form.Field id='form-textarea-control-question' control={TextArea} label='Question' name="question" value={this.state.question}  onChange={this.onChange} />
                   <Form.Field id='form-button-control-public' control={Button} content='Confirm' />
                 </Form>                  
                   </Card.Content>
