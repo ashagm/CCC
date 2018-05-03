@@ -31,3 +31,11 @@
 .donate-container{
   padding: 50px 100px;
 }
+
+.donate-image{
+  height: 200px;
+}
+
+.date{
+  color: #000;
+}

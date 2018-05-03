@@ -17,7 +17,7 @@ class Donate extends Component {
       <Grid.Row columns={3}>
         <Grid.Column>
             <Card className="donate-card">
-              <Image src={image2} />
+              <Image src={image2} className="donate-image"/>
               <Card.Content>
                 <Card.Header>
                   Help cancer research
@@ -46,7 +46,7 @@ class Donate extends Component {
         </Grid.Column>
         <Grid.Column>
            <Card className="donate-card">
-              <Image src={image3} />
+              <Image src={image3} className="donate-image" />
               <Card.Content>
                 <Card.Header>
                   Help Pediatric cancer research
@@ -75,13 +75,13 @@ class Donate extends Component {
         </Grid.Column>
         <Grid.Column>
             <Card className="donate-card">
-              <Image src={image1} />
+              <Image src={image1} className="donate-image"/>
               <Card.Content>
                 <Card.Header>
                    Help a cancer patient for a ride
                 </Card.Header>
                 <Card.Meta>
-                  <span>
+                  <span className='date'>
                      $10 = 1 ride to and from treatment for a cancer patient.
                   </span>
                 </Card.Meta>

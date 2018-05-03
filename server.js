@@ -52,6 +52,7 @@ var io = socket(server);
 // var socket = require('./routes/api/Socket');
 const allowedOrigin = 
 (process.env.NODE_ENV === 'production') ? "https://care-connect-conquer.herokuapp.com/" : 'http://localhost:3000';
+
 app.use(function(req, res, next) {
     res.set('Access-Control-Allow-Origin', allowedOrigin);
     res.set('Access-Control-Allow-Credentials', true);
