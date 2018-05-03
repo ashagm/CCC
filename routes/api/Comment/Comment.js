@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
-var Comment = require("../../../models/comment");
+var Comment = require("../../../models/Comment");
 
 router.post('/create', function(req, res) { 
    console.log("In post", req.body);
