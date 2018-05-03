@@ -7,6 +7,7 @@ import Donate from './components/Donate';
 import Doctors from './components/Doctors';
 import Dashboard from './components/Dashboard';
 import Chat from './components/Chat';
+import Chatroom from './components/Chatroom';
 import Services from './components/Services';
 import Questions from './components/Questions';
 import News from './components/News';
@@ -23,6 +24,7 @@ const App = () => (
         <Route path='/payment' component={Donate}/>
         <Route path='/doctors' component={Doctors}/>
         <Route path='/chat' component={Chat}/>
+        <Route path='/chatroom' component={Chatroom}/>
         <Route path='/services' component={Services}/>
         <Route path='/questions' component={Questions}/>
         <Route path='/news' component={News}/>

@@ -39,41 +39,41 @@ class News extends Component {
 
   render() {
     return (
-      <div>
+      <div className="news-container">
         <NavBar />
         <Grid columns='equal'>
         <Grid.Row>
           <Grid.Column>
-          <Header as='h3' dividing>
+          <Header as='h3' dividing className="news-header">
             National Cancer Institute
           </Header>
           <Segment.Group className="news-segment">
            {this.state.newsNCI.map(nci => ( 
-            <Segment>            
+            <Segment key="nci.link">            
               <a href={nci.link} target="_blank">{nci.title}</a>            
             </Segment>
             ))} 
           </Segment.Group> 
           </Grid.Column>
           <Grid.Column>
-            <Header as='h3' dividing>
+            <Header as='h3' dividing className="news-header">
               World Health Organization
             </Header>
             <Segment.Group className="news-segment">
              {this.state.newsWHO.map(who => ( 
-              <Segment>            
+              <Segment key="who.link">            
                 <a href={who.link} target="_blank">{who.title}</a>            
               </Segment>
               ))} 
             </Segment.Group> 
           </Grid.Column>
           <Grid.Column>
-            <Header as='h3' dividing>
+            <Header as='h3' dividing className="news-header">
               Cancer Research-UK
             </Header>
             <Segment.Group className="news-segment">
              {this.state.newsCRUK.map(cruk => ( 
-              <Segment>            
+              <Segment key="cruk.link">            
                 <a href={cruk.link} target="_blank">{cruk.title}</a>            
               </Segment>
               ))} 

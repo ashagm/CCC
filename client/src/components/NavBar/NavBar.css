@@ -4,6 +4,10 @@
 	float: right;
 	font-size: 20px;
 	font-weight: bold;
+	background-color: #ff3030;
+	border-radius: 20px;
+	text-decoration: none;
+	padding: 10px;
 }
 
 .div-logo{
@@ -19,9 +23,17 @@
 	font-weight: bold;
 	display: inline-block;
 	padding: 10px;
-	background-color: red;
-	border: 2px solid red;
+	background-color: #ff3030;
 	border-radius: 20px;
+	text-decoration: none;
+}
+
+.text-secondary {
+     color: #fff !important; 
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 .nav-container{

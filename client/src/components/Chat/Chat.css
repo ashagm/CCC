@@ -1,7 +1,13 @@
 .chat-container{ 
  
 	font-size: 13px;
+	border: 2px solid #fff;
 	box-sizing: border-box; 
+/*	margin: 0 auto;
+	width: 1000px;*/
+	height: 600px;
+	background-color: #fff;
+	color: #000;
 }
 
 .chat-form { 
@@ -15,6 +21,7 @@
 	border: 0; 
 	padding: 10px; 
 	width: 90%; 
+	color: #000;
 	margin-right: .5%;
 }
       
@@ -25,6 +32,6 @@
 	padding: 10px; 
 }
 
-#messages { list-style-type: none; margin: 0; padding: 0; }
+#messages { list-style-type: none; margin: 0; padding: 0; color: red;}
 #messages li { padding: 5px 10px; }
 #messages li:nth-child(odd) { background: #eee; }

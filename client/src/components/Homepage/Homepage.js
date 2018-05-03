@@ -48,7 +48,7 @@ class Homepage extends Component {
 			   		<img src={question} alt="question" className="btn-image"/>
 			   		Questions</button>
 			   	</Link>
-			   	<Link to="/chat">
+			   	<Link to="/chatroom">
 			   		<button className="btn-tabs">
 			   		<img src={chat} alt="chat" className="btn-image"/>
 			   		Chat</button>

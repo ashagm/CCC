@@ -1,0 +1,26 @@
+.messages{
+	color: blue;
+	font-size: 20px;
+}
+
+.chat-container{
+	background-color: transparent;
+	width: 800px;
+	height: 500px;
+	margin: 0 auto;
+}
+
+.card-chat{
+	width: 800px;
+	height: 500px;
+}
+
+.card-title{
+	color: #000;
+	font-size: 24px;
+	color: grey;
+}
+
+.chat-message{
+	color: #000;
+}

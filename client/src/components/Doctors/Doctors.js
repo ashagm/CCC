@@ -75,7 +75,7 @@ class Doctors extends Component {
               />
               <button className="btn-search" onClick={this.handleFormSubmit}>Search</button>          
             </form>
-            <span><button className="btn-search-rec" onClick={this.fetchSavedDoctors}>Recommended Doctors</button></span>               
+            <span><br/><br/><button className="btn-search-rec" onClick={this.fetchSavedDoctors}>Recommended Doctors</button></span>               
         </div>           
 
         {this.state.doctors.length || this.state.savedDoctors.length ? (
@@ -94,7 +94,7 @@ class Doctors extends Component {
                               alt={savedDoctor.name}
                               className="doc-thumb-image"
                             />
-                            <Item.Description>
+                            <Item.Description style={{color: "rgb(176,196,222)"}}>
                               {savedDoctor.bio}
                             </Item.Description>
                            
@@ -105,27 +105,23 @@ class Doctors extends Component {
               ) :(
               <Item.Group divided>
                   {this.state.doctors.map(doctor => (                   
-                     <Item className="doc-div" key={doctor._id}>
+                     <Item className="doc-div" key={doctor.id}>
                         <Item.Image
                           src={doctor.image}
                           alt={doctor.name}
                           className="doc-thumb-image"
                         />
                         <Item.Content>
-                            <Item.Header style={{color: "rgb(95, 124, 162)"}}>
+                            <Item.Header style={{color: "rgb(255, 255, 255)"}}>
                               Dr. {doctor.name}
                             </Item.Header>
                             <Item.Description>
                               {doctor.speciality.map(specialities => 
-                                    (<p key={specialities.name}>{specialities.name}</p>)
+                                    (<p key={specialities.name} style={{color: "rgb(176,196,222)"}}>{specialities.name}</p>)
                                 )}
                             </Item.Description>
                             <Item.Meta>
-                              <span>{doctor.address.street} {doctor.address.city} {doctor.address.state} </span>
-                              <span>
-                                
-                              </span>
-                              <br />
+                              <span style={{color: "rgb(135,206,235)"}}>{doctor.address.street} {doctor.address.city} {doctor.address.state} </span>
                             </Item.Meta>
 
                          <Button positive onClick={() => this.saveDoctor(doctor)} >Recommend</Button>    
