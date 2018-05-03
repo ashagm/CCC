@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
 var axios = require('axios');
-var Doctor = require("../../../models/doctor");
+var Doctor = require("../../../models/Doctor");
 
 let apiKey = 'fbc02dea436e8732f548483ce4e0c7ef';
 let googleAPIKey= 'AIzaSyDOHt8WJPCxUTykGJPREk1gqNDcfrq--k8';
