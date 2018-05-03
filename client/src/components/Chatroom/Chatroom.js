@@ -14,7 +14,10 @@ class Chatroom extends React.Component{
             messages: []
         };
 
-        this.socket = io('localhost:3000');
+        const url = (process.env.NODE_ENV === 'production') ? 
+        "https://care-connect-conquer.herokuapp.com/" : 'http://localhost:3000';
+
+        this.socket = io(url);
 
         this.socket.on('RECEIVE_MESSAGE', function(data){
             console.log("recieve message", data)
