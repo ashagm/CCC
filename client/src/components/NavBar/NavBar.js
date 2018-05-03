@@ -44,7 +44,7 @@ class NavBar extends Component {
 				<Container className="nav-container">
 			      <div className="div-logo">
 			       	<Link to="/homepage" className="link-homepage">
-			        	<span className="text-secondary">BACK</span>
+			        	<span className="text-secondary">Back</span>
 			        </Link>
 			        <img src={logo} alt="logo" className="logo-register"/>
 			 
