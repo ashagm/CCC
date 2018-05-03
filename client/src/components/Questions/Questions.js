@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {Link } from 'react-router-dom';
 import './Questions.css';
-import API from "../../utils/API";
-import logo from "../../logo.png";
 import NavBar from "../NavBar";
 import Comments from "../Comments";
 import { Card, Segment, Form, Grid, Input, Item, TextArea, Button } from 'semantic-ui-react';
@@ -36,7 +34,7 @@ class Questions extends Component {
 
   componentWillMount(){
     let username = localStorage.getItem("username");
-    // console.log("username", username);
+    console.log("username", username);
     this.setState({"name": username});
   }
 

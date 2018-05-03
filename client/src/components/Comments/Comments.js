@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link } from 'react-router-dom';
 import './Comments.css';
-import API from "../../utils/API";
-import logo from "../../logo.png";
 import avatar from "./avatar.png";
 
-import {Comment, Segment, Form, Input,TextArea, Button, Divider, Header} from 'semantic-ui-react';
+import {Comment, Form, TextArea, Button, Header} from 'semantic-ui-react';
 
 class Comments extends Component {
   

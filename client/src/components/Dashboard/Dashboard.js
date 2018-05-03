@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { RaisedButton} from 'material-ui';
-import axios from 'axios';
 import logo from "../../logo.png";
 import "./Dashboard.css";
 import "./type.js"

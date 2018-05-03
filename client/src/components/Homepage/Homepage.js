@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Link } from 'react-router-dom'
 import axios from 'axios';
-import logo from "../../logo.png";
 import donate from "./donate.png";
 import news from "./news.png";
 import doctor from "./doctor.png";

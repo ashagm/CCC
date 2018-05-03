@@ -8,14 +8,16 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const cors = require('cors');
 
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+var socket = require('./routes/api/Socket');
 
 io.on('connection', function(socket){
   console.log('a user got connected!!');
   
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
+    io.emit('chat message', msg);
   });
 
   socket.on('disconnect', function(){
@@ -53,6 +55,7 @@ const configureServer = app => {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/cccDB");
 
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function(error) {
+  if(error) console.log(error);
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });

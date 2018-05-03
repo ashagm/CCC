@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Services.css';
 import API from "../../utils/API";
-import logo from "../../logo.png";
 import NavBar from "../NavBar";
 import { Card, Segment, Form, Grid, Input, Item, TextArea, Button } from 'semantic-ui-react';
 
@@ -73,7 +72,7 @@ class Services extends Component {
         console.log(result.data);
         this.setState({ message: 'Submitted!' });
 
-        if(servicetype == 'offer'){
+        if(servicetype === 'offer'){
          this.setState({
           servicesOffered: [...this.state.servicesOffered, {
               _id: this.state._id,

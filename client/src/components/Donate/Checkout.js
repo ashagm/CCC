@@ -5,6 +5,8 @@ import StripeCheckout from 'react-stripe-checkout';
 import STRIPE_PUBLISHABLE from '../../constants/stripe';
 import PAYMENT_SERVER_URL from '../../constants/server';
 
+console.log(PAYMENT_SERVER_URL);
+console.log(STRIPE_PUBLISHABLE );
 const CURRENCY = 'USD';
 
 const fromDollarToPenny = amount => amount * 100;
@@ -14,11 +16,11 @@ const successPayment = data => {
 }
 
 const errorPayment = data => {
-	alert('Payment Error');
+	alert('Payment Error....data', data);
 }
 
 const onToken = (amount, description) => token =>
-	axios.post(PAYMENT_SERVER_URL,
+	axios.post('/api/auth/payment',
 	{
 		description,
 		source: token.id,

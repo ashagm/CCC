@@ -1,4 +1,7 @@
 const stripe = require('../../../constants/stripe');
+var express = require('express');
+var router = express.Router();
+
 
 const postStripeCharge = res => (stripeErr, stripeRes) => {
   if (stripeErr) {
@@ -8,16 +11,18 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
   }
 }
 
-const paymentApi = app => {
-  app.get('/payment', (req, res) => {
+// const paymentApi = app => {
+  router.get('/payment', (req, res) => {
+    console.log('/payment', req);
     res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
   });
 
-  app.post('/payment', (req, res) => {
+  router.post('/payment', (req, res) => {
+    console.log('/payment',req.body);
     stripe.charges.create(req.body, postStripeCharge(res));
   });
 
-  return app;
-};
+  // return app;
+// };
 
-module.exports = paymentApi;
+module.exports = router;

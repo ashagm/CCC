@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import './Register.css';
 import logo from "../../logo.png";
 import { RaisedButton, TextField} from 'material-ui';
-import NavBar from "../NavBar";
 
 class Register extends Component {
 

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Doctors.css';
 import API from "../../utils/API";
-import { Segment, Image, Grid, Item, Button } from 'semantic-ui-react';
-import logo from "../../logo.png";
+import { Segment, Image, Item, Button } from 'semantic-ui-react';
 import doclogo from "./doctor.jpeg";
 import NavBar from "../NavBar";
 
@@ -106,7 +105,7 @@ class Doctors extends Component {
               ) :(
               <Item.Group divided>
                   {this.state.doctors.map(doctor => (                   
-                     <Item className="doc-div">
+                     <Item className="doc-div" key={doctor._id}>
                         <Item.Image
                           src={doctor.image}
                           alt={doctor.name}
@@ -118,7 +117,7 @@ class Doctors extends Component {
                             </Item.Header>
                             <Item.Description>
                               {doctor.speciality.map(specialities => 
-                                    (<p>{specialities.name}</p>)
+                                    (<p key={specialities.name}>{specialities.name}</p>)
                                 )}
                             </Item.Description>
                             <Item.Meta>

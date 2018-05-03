@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import './News.css';
-import { Card, Segment, Grid, Header } from 'semantic-ui-react'
+import { Segment, Grid, Header } from 'semantic-ui-react'
 import NavBar from '../NavBar';
 
 

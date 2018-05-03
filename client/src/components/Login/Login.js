@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './Login.css';
-import NavBar from "../NavBar";
 import logo from "../../logo.png";
 import { RaisedButton, TextField} from 'material-ui';
 
@@ -87,9 +86,8 @@ class Login extends Component {
           />
           <br /> <br />
           <RaisedButton 
-            className="btn btn-lg btn-primary btn-block" 
+            className="btn btn-lg btn-register btn-primary btn-block" 
             label="LOGIN" 
-            className="btn-register"
             type="submit" />
           <br/><br/>
           <p>
